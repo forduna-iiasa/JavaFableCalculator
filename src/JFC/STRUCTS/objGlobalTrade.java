@@ -1,4 +1,4 @@
-package linkerdist;
+package JFC.STRUCTS;
 
 public class objGlobalTrade {
     int id,idtransaction,role,state2020,state2025,state2030,state2035,state2040,state2045,state2050,laststate2020,laststate2025,laststate2030,laststate2035,laststate2040,laststate2045,laststate2050,addproduct,currentyear;

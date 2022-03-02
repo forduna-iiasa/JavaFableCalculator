@@ -1,4 +1,4 @@
-package linkerdist;
+package JFC.STRUCTS;
 
 public class ObjFactible {
     int data2020;

@@ -1,4 +1,4 @@
-package linkerdist;
+package JFC.STRUCTS;
 
 import org.jfree.data.xy.XYSeries;
 

@@ -1,4 +1,4 @@
-package linkerdist;
+package JFC.STRUCTS;
 
 public class ObjClassGrR {
     double TotalGHGLand,FoodSecurity,NetForestchange,BiodShareLand;
