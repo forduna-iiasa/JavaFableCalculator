@@ -20,7 +20,7 @@ public class Main {
 
         // write your code here
     }
-    public void PrepareFiles(){
+    public void PrepareFiles() throws IOException {
         int step = 0;
         int totalFiles = 0;
         ZipSecureFile.setMinInflateRatio(0);
