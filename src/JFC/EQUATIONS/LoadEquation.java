@@ -24,6 +24,12 @@ public class LoadEquation {
 
     public void ReedCalcShTbl(String Calculator,String paisx) throws IOException {
         ZipSecureFile.setMinInflateRatio(0);
+        String sheetsFile,tablesFile;
+        sheetsFile = "H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\Sheets.txt";
+        tablesFile = "H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\Tables.txt";
+        //Calculator = "C:\\Calculators\\";
+        BufferedWriter wrSheet = new BufferedWriter(new FileWriter(sheetsFile,true));
+        BufferedWriter wrTable = new BufferedWriter(new FileWriter(tablesFile,true));
         XSSFWorkbook workbook = null;
         try {
             workbook = new XSSFWorkbook(new File(Calculator));
@@ -34,13 +40,21 @@ public class LoadEquation {
 
         for(int i = 2; i< numSheets; i++){
             sheet = workbook.getSheetAt(i);
+            String na = workbook.getSheetAt(i).getSheetName();
+            wrSheet.write(na);
+            wrSheet.newLine();
             tables = sheet.getTables();
             for (XSSFTable t : tables) {
-                System.out.println("HOJA--" + sheet.getSheetName());
-                SaveTable(t,sheet,paisx,t.getName());
+                String v = na+","+t.getName();
+                wrTable.write(v);
+                wrTable.newLine();
+                //SaveTable(t,sheet,paisx,t.getName());
             }
         }
-
+        wrTable.flush();
+        wrTable.close();
+        wrSheet.flush();
+        wrSheet.close();
 
 
         //  }
@@ -50,7 +64,9 @@ public class LoadEquation {
     private void SaveTable(XSSFTable t, XSSFSheet shet, String paisx2, String Tabla) {
         String chivo="",vals="";
         DataFormatter dataFormatter = new DataFormatter();
-        chivo = "C:\\Calculators\\formulas\\" + paisx2+"_"+Tabla+"_"+shet.getSheetName()+".txt";
+        chivo = "H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\equations.txt";
+                //shet.getSheetName()+".txt";
+
         int startRow = t.getStartCellReference().getRow();
         int endRow = t.getEndCellReference().getRow();
         int startColumn = t.getStartCellReference().getCol();

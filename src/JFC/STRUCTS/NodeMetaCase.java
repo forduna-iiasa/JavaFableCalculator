@@ -1,21 +1,29 @@
 package JFC.STRUCTS;
 
+import java.util.ArrayList;
+
 public class NodeMetaCase {
     NodeListKd KdTreeRoot;
 
     {
         KdTreeRoot = new NodeListKd();
     }
-
+    NodeTable Tables;
+    {
+        Tables = new NodeTable();
+        Tables.setIdTable("TablesRoot");
+    }
     NodeMetaCase der;
     NodeMetaCase izq;
     NodeMetaCase last;
     public int id;
+    private String name;
     public NodeMetaCase retrievedNode;
     public NodeListKd retrivedcase;
     public NodeMetaCase MainMcRoot(){
         NodeMetaCase Mc = new NodeMetaCase();
-        Mc.setId(1);
+        Mc.setId(0);
+        Mc.setName("Padre");
         return Mc;
     }
 
@@ -27,11 +35,12 @@ public class NodeMetaCase {
         this.id = id;
     }
 
-    public NodeMetaCase addMcBrother(NodeMetaCase mainRoot, int id){
+    public NodeMetaCase addMcBrother(NodeMetaCase mainRoot, int id, String name){
         NodeMetaCase root = mainRoot;
         NodeMetaCase bro = new NodeMetaCase();
         NodeMetaCase last;
         bro.setId(id);
+        bro.setName(name);
         if(root.der != null){
             last = root.last;
             last.der = bro;
@@ -44,12 +53,24 @@ public class NodeMetaCase {
         return mainRoot;
     }
 
-    public NodeMetaCase retrieveMc(NodeMetaCase root, int id){
+    public NodeMetaCase retrieveMc_id(NodeMetaCase root, int id){
         if(root.getId() == id){
             retrievedNode = root;
         }else{
             if(root.der != null){
-                retrieveMc(root.der,id);
+                retrieveMc_id(root.der,id);
+            }else{
+                retrievedNode = root;
+            }
+        }
+        return retrievedNode;
+    }
+    public NodeMetaCase retrieveMc_name(NodeMetaCase root, String id){
+        if(root.getName().equals(id)){
+            retrievedNode = root;
+        }else{
+            if(root.der != null){
+                retrieveMc_name(root.der,id);
             }else{
                 retrievedNode = root;
             }
@@ -60,6 +81,17 @@ public class NodeMetaCase {
     public NodeMetaCase LinkerKdTree(NodeMetaCase Mc, NodeListKd LinkerList){
 
         Mc.KdTreeRoot = addKdTree(LinkerList, Mc.KdTreeRoot,0);
+        return Mc;
+    }
+
+    public NodeMetaCase LinkTables(NodeMetaCase Mc, ArrayList Tabl){
+        NodeMetaCase aux;
+        for(int i=0;i<Tabl.size();i++){
+            String casi = Tabl.get(i).toString();
+            String [] dat = casi.split(",");
+            aux = Mc.retrieveMc_name(Mc,dat[0].toString());
+            aux.Tables.addTblBrother(aux.Tables,dat[1].toString());
+            }
         return Mc;
     }
 
@@ -182,4 +214,11 @@ public class NodeMetaCase {
 return root;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
