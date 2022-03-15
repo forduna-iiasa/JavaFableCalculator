@@ -3,6 +3,8 @@ package JFC.IIASA;
 import JFC.DATA.DataTable;
 import JFC.EQUATIONS.LoadEquation;
 import JFC.STRUCTS.NodeMetaCase;
+import JFC.STRUCTS.NodeTable;
+import JFC.STRUCTS.RowCols;
 import com.mysql.cj.xdevapi.FindStatement;
 import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -27,21 +29,50 @@ public class Main {
         int isStatement;
         boolean isHoja=false;
         boolean isTable=false;
-        String cad = "=IF(sumif(vlookup(and[@BiofuelType]=Livedens_scen,WaterUse_Scen,ClimateChange_Scen,PA_Scen,PostHarvestLoss_Scen,Biofuel_Scen,Pop_Scen,GDP_Scen,Diet_scen,Live_scen,Land_Scen,Crop_scen,Scen_foodloss,ImportDef,Product_ImpScen,product_Exports,ExpScenTarget,\"biodiesel\",[@[Biofuel_CO2]]-[@IPCCDieselOil],[@[Biofuel_CO2]]-[@IPCCGasoline])";
+        String cad = "=IF(sumif(vlookup(an[@BiofuelType]=Livedens_scen,WaterUse_Scen,ClimateChange_Scen,PA_Scen,PostHarvestLoss_Scen,Biofuel_Scen,Pop_Scen,GDP_Scen,Diet_scen,Live_scen,Land_Scen,Crop_scen,Scen_foodloss,ImportDef,Product_ImpScen,product_Exports,ExpScenTarget,\"biodiesel\",[@[Biofuel_CO2]]-[@IPCCDieselOil],[@[Biofuel_CO2]]-[@IPCCGasoline])";
         String toks="",variable="",cadena="";
         ArrayList CalcTables;
-        ArrayList CalcSheets;
+        ArrayList CalcSheets,Equations;
         tope = cad.lastIndexOf("");
         char car = ' ';
-       // new Main().PrepareCountryFiles();
+        //new Main().PrepareCountryFiles();
         CalcSheets = new LoadSheetNames().GetData();
         CalcTables = new LoadTableNames().GetData();
-        //build mcs
-        NodeMetaCase LinkerMc;
+        Equations = new LoadEquations().GetData();
+        //region build mcs LA hoja es el mc y sus hijos son las tablas que tiene cada hoja
+        /* NodeMetaCase LinkerMc;
         NodeMetaCase Mcs = new NodeMetaCase();
         LinkerMc = Mcs.MainMcRoot();
         LinkerMc = m.BuildMcs(LinkerMc,CalcSheets);
         LinkerMc.LinkTables(LinkerMc,CalcTables);
+        */
+        //endregion
+
+ //region agregamos todas las tablas como Mc como lo majena excel ya que no se usa SheetName.TableName solo se usa TableName en excel
+        NodeTable TablesRoot,auxTablesRoot;
+        RowCols RowsRoot = new RowCols();
+        NodeTable McTables = new NodeTable();
+        TablesRoot = McTables.getTablesRoot();
+        TablesRoot = McTables.LinkTables(TablesRoot,CalcTables);
+        //endregion
+        //region agregamos primer renglon con nombres de las columnas
+        auxTablesRoot = TablesRoot;
+        for(int init=0;init<CalcTables.size();init++){
+            String columns = (String) CalcTables.get(init);
+            String[] getTabl = columns.split(",");
+            auxTablesRoot = auxTablesRoot.retrieve(auxTablesRoot,getTabl[1]);
+            //agregamos renglon inicial en mc tabla recuperada y sus columnas correspondientes con su nombre
+            auxTablesRoot = RowsRoot.iniRow(auxTablesRoot,columns,init);
+        }
+        //endregion
+        //region recuperamos tabla a agregar renglones y agregamos sus renglones
+        auxTablesRoot = TablesRoot.retrieve(TablesRoot,"PostHarvestLoss_Scen");
+        RowCols auxRows = auxTablesRoot.Rows;
+        for(int idrow=0;idrow<Equations.size();idrow++){
+            RowsRoot = RowsRoot.addRow(auxRows, (String) Equations.get(idrow),idrow);
+            }
+      //endregion
+
         while (numCh < tope) {
             car = cad.charAt(numCh);
             col = MatLex.getCol(car);
@@ -63,8 +94,9 @@ public class Main {
                                System.out.println("es Hoja->"+cadena+"["+200+"]");
                                toks = toks + "200,";
                                cadena = "";
+
                            }
-                           if(!isHoja){
+                           if(isHoja==false){
                                isTable = m.FindTable(CalcTables,cadena);
                                if(isTable==true){
                                    System.out.println("es Tabla->"+cadena+"["+300+"]");
@@ -126,6 +158,7 @@ public class Main {
         }
         return false;
     }
+
     public boolean FindSheet(ArrayList LstSheets, String name){
         for(int i =0; i<LstSheets.size();i++) {
             if (LstSheets.get(i).equals(name)) {

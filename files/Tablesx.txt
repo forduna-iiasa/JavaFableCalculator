@@ -1,0 +1,149 @@
+SCENARIOS selection,Scen_imports
+SCENARIOS selection,Scen_exports
+SCENARIOS selection,Affor_scen
+SCENARIOS selection,FixTrade_Scen
+SCENARIOS selection,PopActivity_scen
+SCENARIOS selection,Livedens_scen
+SCENARIOS selection,WaterUse_Scen
+SCENARIOS selection,ClimateChange_Scen
+SCENARIOS selection,PA_Scen
+SCENARIOS selection,PostHarvestLoss_Scen
+SCENARIOS selection,Biofuel_Scen
+SCENARIOS selection,Pop_Scen
+SCENARIOS selection,GDP_Scen
+SCENARIOS selection,Diet_scen
+SCENARIOS selection,Live_scen
+SCENARIOS selection,Land_Scen
+SCENARIOS selection,Crop_scen
+SCENARIOS selection,Scen_foodloss
+SCENARIOS definition,ImportDef
+SCENARIOS definition,Product_ImpScen
+SCENARIOS definition,product_Exports
+SCENARIOS definition,ExpScenTarget
+SCENARIOS definition,ExportDef
+SCENARIOS definition,LivePdtyTarget
+SCENARIOS definition,LivePdtyDef
+SCENARIOS definition,CropPdtyTarget
+SCENARIOS definition,CropPdtyDef
+SCENARIOS definition,AfforTarget
+SCENARIOS definition,AfforScenDef
+SCENARIOS definition,DietTarget
+SCENARIOS definition,DietScenDef
+SCENARIOS definition,DietImplRates
+SCENARIOS definition,FixImportShare
+SCENARIOS definition,FixExports
+SCENARIOS definition,FinalTradeAdj
+SCENARIOS definition,Def_dmer
+SCENARIOS definition,LiveDensDef
+SCENARIOS definition,WaterUseEfficiencyShifters
+SCENARIOS definition,LandScenTarget
+SCENARIOS definition,CCShifters
+SCENARIOS definition,PAtarget
+SCENARIOS definition,PATarget_def
+SCENARIOS definition,PHLoss_target
+SCENARIOS definition,PhLossTarget_def
+SCENARIOS definition,BiofuelScen_def
+SCENARIOS definition,GdpPopTarget
+SCENARIOS definition,income_elas
+SCENARIOS definition,FoodLossTarget
+SCENARIOS definition,FLScenTarget
+SCENARIOS definition,ImplCoefOptions
+SCENARIOS definition,ImpScenTarget
+SCENATHON_report,Selected_scenarios
+SCENATHON_report,Reporting_byproduct
+SCENATHON_report,Reporting_aggregate
+FOOD,Results_Diets
+FOOD,Total_results_diets
+PRODUCTION,ResultsProd
+PRODUCTION,TotalResultsProd
+TRADE,ResultsTrade
+TRADE,TotalResultsTrade
+BIODIVERSITY,ResultsBiodiv
+BIODIVERSITY,ResultsProtectedAreas
+BIODIVERSITY,ResultsTargetBiodiv
+LAND,ResultsLand
+LAND,ResultsCropArea
+GHG,ResultsGHG
+WATER,TotalResultsWF
+WATER,ResultsWF
+1_calc_human_demand,calc_hum_demand
+1_calc_human_demand,UNPopSexAge
+1_calc_human_demand,calc_dmer_activitylevel
+1_calc_human_demand,Calc_min_daily_kcal
+1_data_demand,OtherDiets
+1_data_demand,FoodLossByGroup
+1_data_demand,MissingGroupsCalories
+1_data_demand,MapMissingCalories
+1_data_demand,MapOECDProduct
+1_data_demand,BiofuelDataOECD
+1_data_demand,BiofuelFeedstockConversion
+1_data_demand,BiofuelEnergyConversion
+1_data_demand,FAOFoodPerCapita
+1_data_demand,AndradeBiofuels
+1_data_demand,gdp_pop_hist
+1_data_demand,prod_balance
+1_data_demand,map_group
+1_data_demand,food_indic
+1_data_demand,FAOPrices
+1_data_demand,Table74
+1_data_demand,WoodmapUnit
+1_data_demand,EATLancet_rec
+2_calc_livestock,calc_livestocknb
+2_calc_livestock,Calc_Feed
+2_calc_livestock,Calc_pasture
+2_calc_livestock,ChkHerd
+2_calc_livestock,Chk_animproducts
+2_data_livestock,FAOLivePdty
+2_data_livestock,FAOLiveProd2015
+2_data_livestock,data_live
+2_data_livestock,landcover
+2_data_livestock,LiveItemMap
+2_data_livestock,FAOheads
+2_data_livestock,FAOAnimalMap
+2_data_livestock,FeedCropMap
+2_data_livestock,Herdcount
+2_data_livestock,MapAnimal
+3_calc_crops,calc_crops
+3_calc_crops,ChkCrops
+3_data_crops,map_fproduct_crop
+3_data_crops,FAOCropProd
+3_data_crops,Fprodcount
+3_data_crops,FAOCropPdty
+3_data_crops,Byproduct
+3_data_crops,IrrigatedCropArea
+4_calc_land,calc_land_cor
+4_data_land,NationalLandCover
+4_data_land,MapESAShort
+4_data_land,PAIntactLandEcoregion
+4_data_land,ESALandArea
+4_data_land,CalcHistLand
+4_data_land,MapLCAgg
+4_data_land,FAOLandArea
+4_data_land,MapFAOLCAgg
+4_data_land,HansenForArea
+4_data_land,ProtectedAreas
+4_data_land,MapNationalLcAgg
+5_feas_livestock,Calc_FeasRuminants
+5_feas_livestock,Calc_FeasFeed
+5_feas_livestock,Calc_FeasProdLivestock
+6_feas_crops,Calc_feasCrops
+7_feas_consohum,Calc_FeasConsoHum
+8_calc_emissions,Calc_rumemis
+8_calc_emissions,calc_monogemis
+8_calc_emissions,calc_cropemis
+8_calc_emissions,calc_landemis
+8_calc_emissions,calc_biofuelsavings
+8_data_emissions,FAOTotalEmis
+8_data_emissions,FAOLiveEmis
+8_data_emissions,FAOCropEmis
+8_data_emissions,FAOavgCropEF
+8_data_emissions,FAOLandCarbon
+8_data_emissions,LandCarbon
+8_data_emissions,BiofuelSavingsData
+8_data_emissions,MapGHGSources
+9_calc_water,calc_crop_wf
+9_calc_water,calc_live_wf
+9_data_water,EmbedWaterCrop
+9_data_water,EmbedWaterLive
+9_data_water,MapWaterProduct
+9_data_water,Hist_waterfootprint

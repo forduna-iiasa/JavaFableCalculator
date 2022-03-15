@@ -1,5 +1,9 @@
 package JFC.STRUCTS;
 
+import javafx.scene.control.Tab;
+
+import java.util.ArrayList;
+
 public class NodeTable {
     public int id;
     public String idTable;
@@ -8,10 +12,13 @@ public class NodeTable {
     public NodeTable izq;
     public NodeTable last;
     public NodeTable retrievedTable;
+    public RowCols Rows;
 
-    public NodeTable MainLastRoot(){
-        NodeTable mainRoot = new NodeTable();
-        return mainRoot;
+    public NodeTable getTablesRoot(){
+        NodeTable TablesRoot = new NodeTable();
+        TablesRoot.setId(0);
+        TablesRoot.setIdTable("TablesRoot");
+        return TablesRoot;
     }
 
     public int getId() {
@@ -53,11 +60,13 @@ public class NodeTable {
         this.idTable = idTable;
     }
 
-    public NodeTable addTblBrother(NodeTable mainRoot, String idTable){
+    public NodeTable addTblBrother(NodeTable mainRoot, String Table,int idtable){
+        String [] dat = Table.split(",");
         NodeTable root = mainRoot;
         NodeTable bro = new NodeTable();
         NodeTable last;
-        bro.setIdTable(idTable);
+        bro.setId(idtable);
+        bro.setIdTable(dat[1]);
         if(root.der != null){
             last = root.last;
             last.der = bro;
@@ -81,5 +90,12 @@ public class NodeTable {
             }
         }
         return retrievedTable;
+    }
+
+    public NodeTable LinkTables(NodeTable McTables, ArrayList Tabl){
+        for(int i=0;i<Tabl.size();i++){
+            McTables.addTblBrother(McTables,Tabl.get(i).toString(),i);
+        }
+        return McTables;
     }
 }

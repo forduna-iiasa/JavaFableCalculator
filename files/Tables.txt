@@ -1,149 +1,149 @@
-SCENARIOS selection,Scen_imports
-SCENARIOS selection,Scen_exports
-SCENARIOS selection,Affor_scen
-SCENARIOS selection,FixTrade_Scen
-SCENARIOS selection,PopActivity_scen
-SCENARIOS selection,Livedens_scen
-SCENARIOS selection,WaterUse_Scen
-SCENARIOS selection,ClimateChange_Scen
-SCENARIOS selection,PA_Scen
-SCENARIOS selection,PostHarvestLoss_Scen
-SCENARIOS selection,Biofuel_Scen
-SCENARIOS selection,Pop_Scen
-SCENARIOS selection,GDP_Scen
-SCENARIOS selection,Diet_scen
-SCENARIOS selection,Live_scen
-SCENARIOS selection,Land_Scen
-SCENARIOS selection,Crop_scen
-SCENARIOS selection,Scen_foodloss
-SCENARIOS definition,ImportDef
-SCENARIOS definition,Product_ImpScen
-SCENARIOS definition,product_Exports
-SCENARIOS definition,ExpScenTarget
-SCENARIOS definition,ExportDef
-SCENARIOS definition,LivePdtyTarget
-SCENARIOS definition,LivePdtyDef
-SCENARIOS definition,CropPdtyTarget
-SCENARIOS definition,CropPdtyDef
-SCENARIOS definition,AfforTarget
-SCENARIOS definition,AfforScenDef
-SCENARIOS definition,DietTarget
-SCENARIOS definition,DietScenDef
-SCENARIOS definition,DietImplRates
-SCENARIOS definition,FixImportShare
-SCENARIOS definition,FixExports
-SCENARIOS definition,FinalTradeAdj
-SCENARIOS definition,Def_dmer
-SCENARIOS definition,LiveDensDef
-SCENARIOS definition,WaterUseEfficiencyShifters
-SCENARIOS definition,LandScenTarget
-SCENARIOS definition,CCShifters
-SCENARIOS definition,PAtarget
-SCENARIOS definition,PATarget_def
-SCENARIOS definition,PHLoss_target
-SCENARIOS definition,PhLossTarget_def
-SCENARIOS definition,BiofuelScen_def
-SCENARIOS definition,GdpPopTarget
-SCENARIOS definition,income_elas
-SCENARIOS definition,FoodLossTarget
-SCENARIOS definition,FLScenTarget
-SCENARIOS definition,ImplCoefOptions
-SCENARIOS definition,ImpScenTarget
-SCENATHON_report,Selected_scenarios
-SCENATHON_report,Reporting_byproduct
-SCENATHON_report,Reporting_aggregate
-FOOD,Results_Diets
-FOOD,Total_results_diets
-PRODUCTION,ResultsProd
-PRODUCTION,TotalResultsProd
-TRADE,ResultsTrade
-TRADE,TotalResultsTrade
-BIODIVERSITY,ResultsBiodiv
-BIODIVERSITY,ResultsProtectedAreas
-BIODIVERSITY,ResultsTargetBiodiv
-LAND,ResultsLand
-LAND,ResultsCropArea
-GHG,ResultsGHG
-WATER,TotalResultsWF
-WATER,ResultsWF
-1_calc_human_demand,calc_hum_demand
-1_calc_human_demand,UNPopSexAge
-1_calc_human_demand,calc_dmer_activitylevel
-1_calc_human_demand,Calc_min_daily_kcal
-1_data_demand,OtherDiets
-1_data_demand,FoodLossByGroup
-1_data_demand,MissingGroupsCalories
-1_data_demand,MapMissingCalories
-1_data_demand,MapOECDProduct
-1_data_demand,BiofuelDataOECD
-1_data_demand,BiofuelFeedstockConversion
-1_data_demand,BiofuelEnergyConversion
-1_data_demand,FAOFoodPerCapita
-1_data_demand,AndradeBiofuels
-1_data_demand,gdp_pop_hist
-1_data_demand,prod_balance
-1_data_demand,map_group
-1_data_demand,food_indic
-1_data_demand,FAOPrices
-1_data_demand,Table74
-1_data_demand,WoodmapUnit
-1_data_demand,EATLancet_rec
-2_calc_livestock,calc_livestocknb
-2_calc_livestock,Calc_Feed
-2_calc_livestock,Calc_pasture
-2_calc_livestock,ChkHerd
-2_calc_livestock,Chk_animproducts
-2_data_livestock,FAOLivePdty
-2_data_livestock,FAOLiveProd2015
-2_data_livestock,data_live
-2_data_livestock,landcover
-2_data_livestock,LiveItemMap
-2_data_livestock,FAOheads
-2_data_livestock,FAOAnimalMap
-2_data_livestock,FeedCropMap
-2_data_livestock,Herdcount
-2_data_livestock,MapAnimal
-3_calc_crops,calc_crops
-3_calc_crops,ChkCrops
-3_data_crops,map_fproduct_crop
-3_data_crops,FAOCropProd
-3_data_crops,Fprodcount
-3_data_crops,FAOCropPdty
-3_data_crops,Byproduct
-3_data_crops,IrrigatedCropArea
-4_calc_land,calc_land_cor
-4_data_land,NationalLandCover
-4_data_land,MapESAShort
-4_data_land,PAIntactLandEcoregion
-4_data_land,ESALandArea
-4_data_land,CalcHistLand
-4_data_land,MapLCAgg
-4_data_land,FAOLandArea
-4_data_land,MapFAOLCAgg
-4_data_land,HansenForArea
-4_data_land,ProtectedAreas
-4_data_land,MapNationalLcAgg
-5_feas_livestock,Calc_FeasRuminants
-5_feas_livestock,Calc_FeasFeed
-5_feas_livestock,Calc_FeasProdLivestock
-6_feas_crops,Calc_feasCrops
-7_feas_consohum,Calc_FeasConsoHum
-8_calc_emissions,Calc_rumemis
-8_calc_emissions,calc_monogemis
-8_calc_emissions,calc_cropemis
-8_calc_emissions,calc_landemis
-8_calc_emissions,calc_biofuelsavings
-8_data_emissions,FAOTotalEmis
-8_data_emissions,FAOLiveEmis
-8_data_emissions,FAOCropEmis
-8_data_emissions,FAOavgCropEF
-8_data_emissions,FAOLandCarbon
-8_data_emissions,LandCarbon
-8_data_emissions,BiofuelSavingsData
-8_data_emissions,MapGHGSources
-9_calc_water,calc_crop_wf
-9_calc_water,calc_live_wf
-9_data_water,EmbedWaterCrop
-9_data_water,EmbedWaterLive
-9_data_water,MapWaterProduct
-9_data_water,Hist_waterfootprint
+SCENARIOS selection,Scen_imports,Selection,ImportScen,Description,Value,
+SCENARIOS selection,Scen_exports,Selection,ExportScen,Description,Value,
+SCENARIOS selection,Affor_scen,SELECTION,AFFOR_scen,DESCRIPTION,Value,
+SCENARIOS selection,FixTrade_Scen,SELECTION,FixTradeScen,DESCRIPTION,Value,
+SCENARIOS selection,PopActivity_scen,SELECTION,Acitivy_scen,DESCRIPTION,Value,USED in,
+SCENARIOS selection,Livedens_scen,SELECTION,LIVEDENS_scen,DESCRIPTION,Value,
+SCENARIOS selection,WaterUse_Scen,SELECTION,WF_Scen,DESCRIPTION,Value,
+SCENARIOS selection,ClimateChange_Scen,SELECTION,CC_scen,DESCRIPTION,VALUE,
+SCENARIOS selection,PA_Scen,SELECTION,CC_scen,DESCRIPTION,%TotalLand,
+SCENARIOS selection,PostHarvestLoss_Scen,SELECTION,PHLoss_scen,DESCRIPTION,VALUE,
+SCENARIOS selection,Biofuel_Scen,SELECTION,Biofuel_scen,DESCRIPTION,VALUE,
+SCENARIOS selection,Pop_Scen,SELECTION,POP_SCEN,DESCRIPTION,
+SCENARIOS selection,GDP_Scen,SELECTION,GDP_SCEN,DESCRIPTION,
+SCENARIOS selection,Diet_scen,SELECTION,DIET_SCEN,DESCRIPTION,Value,
+SCENARIOS selection,Live_scen,SELECTION,LIVE_SCEN,DESCRIPTION,Value,
+SCENARIOS selection,Land_Scen,SELECTION,LAND_scen,DESCRIPTION,Value,
+SCENARIOS selection,Crop_scen,SELECTION,LIVE_SCEN,DESCRIPTION,Value,
+SCENARIOS selection,Scen_foodloss,Selection,FoodLossScen,Description,Value,
+SCENARIOS definition,ImportDef,ImportScen,Product,ImplTiming,Year,Current,Target,ImplCoef,CalcImpShare,
+SCENARIOS definition,Product_ImpScen,PRODUCT,ImplTiming,Value,
+SCENARIOS definition,product_Exports,Product,ImplTiming,value,
+SCENARIOS definition,ExpScenTarget,Exportscen,Product,Exports_cur,shift_2050,Exports_2050,
+SCENARIOS definition,ExportDef,ExportScen,Product,ImplTiming,Year,Current,Target,ImplCoef,Calc,
+SCENARIOS definition,LivePdtyTarget,LIVE_SCEN,ImplTiming,GrowthMultiplier0,GrowthMultiplier1,GrowthMultiplier2,
+SCENARIOS definition,LivePdtyDef,LIVE_SCEN,ANIMAL,Product,ifcountanimal,ImplTiming,YEAR,Pdty_00_10,Multiplier,ImplCoef,Pdty_shifter,
+SCENARIOS definition,CropPdtyTarget,CROP_SCEN,Crop,ImplTiming,GrowthMultiplier0,GrowthMultiplier1,GrowthMultiplier2,
+SCENARIOS definition,CropPdtyDef,CROP_SCEN,CROP,ImplTiming,YEAR,Pdty_00_05,Pdty_00_10,MultiplierInitial,Multiplier,ImplCoef,Pdty_shifter,
+SCENARIOS definition,AfforTarget,AFFORScen,ImpTiming,AfforLand,Cropland,Pasture,OtherLand,ShCropland,ShPasture,ShOtherLand,
+SCENARIOS definition,AfforScenDef,AFFORScen,Year,TotalAffor,ImplTiming,ImplCoef,NewForest,ShCropland,ShPasture,ShNatLnd,AfforCropland,AfforPasture,AfforOtherLand,
+SCENARIOS definition,DietTarget,DietScen,PROD_GROUP,target,FAO2010,diff,
+SCENARIOS definition,DietScenDef,DietScen,PROD_GROUP,ImplTiming,Year,current,FAO2015,DiffTarget,ImplCoef,Calc,Shifter,
+SCENARIOS definition,DietImplRates,DietScen,ImplTiming,
+SCENARIOS definition,FixImportShare,ImportScen,Product,InternalDemand2050,FixImports,ShImports2010,ShImports2050,
+SCENARIOS definition,FixExports,ExportScen,Product,CurrentExports,FixExports,
+SCENARIOS definition,FinalTradeAdj,Product,Year,ImportsAdj,ExportsAdj,
+SCENARIOS definition,Def_dmer,Sex,ActivityLevel,0_4,5_9,10_14,15_19,20_24,25_29,30_34,35_39,40_44,45_49,50_54,55_59,60_64,65_69,70_74,75+,
+SCENARIOS definition,LiveDensDef,LIVEDENS_scen,RumDens2000,RumDens2010,Growth_00_10,AnnualGrowthRate,
+SCENARIOS definition,WaterUseEfficiencyShifters,WF_scen,YEAR,shWF_blue,
+SCENARIOS definition,LandScenTarget,LANDScen,Year,Cropland,Pasture,ShForLoss,
+SCENARIOS definition,CCShifters,CC_scen,Crop,Year,Yield_Irr,Yield_Rf,Water_Irr,Fert_irr,Fert_rf,
+SCENARIOS definition,PAtarget,PA_Scen,Ecoregion,PAareacur,PAsharecur,PAsharetarget,PAtarget_forest,PAtarget_Otherland,Patarget_NA,
+SCENARIOS definition,PATarget_def,PA_Scen,LCAgg,Year,Impltiming,Implcoef,PAareacur,PAareatarget,PAcalc,
+SCENARIOS definition,PHLoss_target,PHLoss_Scen,Sector,ImplTiming,RelTarget2050,
+SCENARIOS definition,PhLossTarget_def,PHLoss_Scen,Sector,Year,ImplTiming,ImplCoef,Target2050,PHLShCalc,
+SCENARIOS definition,BiofuelScen_def,Biofuel_scen,Fproduct,Year,Value2010,Shifter2010,
+SCENARIOS definition,GdpPopTarget,SCEN,YEAR,GDPT,POPT,GDP_shift_2015,POP_Shift_2015,GDP_shift_2000,POP_shift_2000,
+SCENARIOS definition,income_elas,SCEN,PROD_GROUP,YEAR,Inc_elas,
+SCENARIOS definition,FoodLossTarget,FoodLossScen,Prod_group,Scen_group,ImplTiming,Year,Current,Target,ImplCoef,FoodLoss,
+SCENARIOS definition,FLScenTarget,FoodLossScen,Prod_group,Scen_group,ImplTiming,RelChange2050,
+SCENARIOS definition,ImplCoefOptions,ImplTiming,Year,Share_2050,
+SCENARIOS definition,ImpScenTarget,Importscen,Product,ImportShare_cur,ShiftImports,ImportShare_2050,
+SCENATHON_report,Selected_scenarios,GDP,Population,Diet,ShareFoodWaste,ShareConsoImported,Exports,LiveProductivity,CropProductivity,AgriLandExpansion,Afforestation,TradeAdjustment,PopActivity,WaterEfficiency,ClimateChange,PA,Post_Harvest_Loss,Biofuels,
+SCENATHON_report,Reporting_byproduct,Location,Product,Year,Import_quantity,Export_quantity,ProdQ_hist,ProdQ_feas,FeasHarvarea,IrrHarvArea,RfHarvArea,FeasPlantarea,feasYield,Anim_feas,FeedQ,FoodQ,FoodwasteQ,BiofuelUseQ,NonFoodQ,ProcQ,StockVar,ProdLossesQ,ChkBal,kcalfeasprod,protfeasprod,fatfeasprod,
+SCENATHON_report,Reporting_aggregate,Location,Year,GDP,Population,kcal_hist,kcal_targ,kcal_feas,fat_feas,prot_feas,kcal_mder,HistBiodivLnd,CalcBiodivLnd,BiodivTarget,ProtectedAreasForest,ProtectedAreasOtherNat,ProtectedAreasOther,CropBiodiv,HistCropland,HistHarvArea,HistPasture,HistUrban,HistForest,HistOtherLand,CalcCropland,CalcPasture,CalcForest,CalcNewForest,CalcOtherLand,CalcUrban,TotalLand,ForestChange,NewForestChange,NetForestChange,HistCropAllCO2e,HistCropCO2,HistCropN2O,HistCropCH4,CalcCropAllCO2e,CalcCropN2O,CalcCropCH4,CalcCropCO2,HistLiveAllCO2e,HistLiveN2O,HistLiveCH4,CalcLiveAllCO2e,CalcLiveCH4,CalcLiveN2O,CalcAllAgriCO2e,CalcDeforCO2,CalcOtherLUCCO2,CalcSequestCO2,CalcPeatCO2,CalcAllLandCO2e,GHGbiofuels,HistWFgreen,HistWFblue,HistWFgrey,CalcWFgreen,CalcWFblue,CalcWFgrey,
+FOOD,Results_Diets,PROD_GROUP,YEAR,gr_hist,kcal_hist,gr_trend,kcal_trend,fat_trend,prot_trend,gr_calc,kcal_calc,fat_calc,prot_calc,gr_healthy,kcal_healthy,
+FOOD,Total_results_diets,PROD_GROUP,YEAR,kcal_hist,prot_hist,fat_hist,kcal_target,fat_target,prot_target,kcal_feas,fat_feas,prot_feas,kcal_MDER,prot_rec,fat_rec,
+PRODUCTION,ResultsProd,PRICEyear,Product,Year,price_loc,price_usd,prodq_hist,prodvloc_hist,prodvusd_hist,prodq_targ,prodvloc_targ,prodvusd_targ,prodq_feas,prodvloc_feas,prodvusd_feas,prodq_obj,prodvloc_obj,prodvusd_obj,
+PRODUCTION,TotalResultsProd,Product,YEAR,prodvloc_hist,prodvusd_hist,prodvloc_targ,prodvusd_targ,prodvloc_feas,prodvusd_feas,
+TRADE,ResultsTrade,PriceYear,PRODUCT,YEAR,ExportPrice,ImportPrice,ExportQ_targ,Exportvusd_targ,ExportQ_feas,Exportvusd_feas,ImportQ_feas,Importvusd,
+TRADE,TotalResultsTrade,YEAR,Exportvusd_hist,Exportvusd_targ,Exportvusd_feas,Importvusd_hist,Importvusd,TradeBalanceFeas_usd,
+BIODIVERSITY,ResultsBiodiv,YEAR,FAOForest,FAOOtherLand,FAOTotalLand,CalcForest,CalcNewForest,CalcOtherLand,FAOBiodivLnd,CalcBiodivLnd,BiodivTarget,
+BIODIVERSITY,ResultsProtectedAreas,YEAR,Forest,Otherland,Cropland,Grassland,NotRelevant,TOTAL,ShTotalLand,
+BIODIVERSITY,ResultsTargetBiodiv,YEAR,HistForestIntact,HistOtherLandIntact,HistGrassIntact,HistCropIntact,HistNotRel,HistIntactSh,HistForestSh,HistOtherLandSh,BufferIntact,CalcForestIntact,CalcOtherLandIntact,NewForestChange,CalcTotalntact,CalcIntactSh,
+LAND,ResultsLand,Year,NATCropland,NATHarvArea,NATPasture,NATUrban,NATForest,NATOtherLand,Cropland,HarvArea,Pasture,Urban,NewForest,Forest,OtherLand,TOTAL,CroplandChange,PastureChange,UrbanChange,ForestChange,NewForestChange,OtherLandChange,TotalChange,DeforRate,HistDefor,
+LAND,ResultsCropArea,CROP,PRODGROUP,YEAR,HistHarvarea,HistProd,HistYield,TargHarvarea,TargProd,TargYield,FeasHarvarea,FeasProd,feasYield,
+GHG,ResultsGHG,Year,TotalCO2e,FAOTotalCO2e,AgriCO2e,AgriCO2,AgriN2O,TotalCH4,HistLiveCO2e,HistLiveN2O,HistLiveCH4,LiveCO2e,LiveN2O,LiveCH4,HistCropCO2e,HistCropCO2,HistCropN2O,HistCropCH4,CropCO2e,CropCO2,CropN2O,CropCH4,LandCO2e,DeforCO2,OtherLandCO2,LandSeq,BiofuelSavings,
+WATER,TotalResultsWF,Product,YEAR,wf_green_crop_hist,wf_blue_crop_hist,wf_grey_crop_hist,wf_green_live_hist,wf_blue_live_hist,wf_grey_live_hist,wf_green_hist,wf_blue_hist,wf_grey_hist,wf_green_crop,wf_blue_crop,wf_grey_crop,wf_green_live,wf_blue_live,wf_grey_live,wf_green,wf_blue,wf_grey,
+WATER,ResultsWF,Product,YEAR,wf_green_crop,wf_blue_crop,wf_grey_crop,wf_green_live,wf_blue_live,wf_grey_live,
+1_calc_human_demand,calc_hum_demand,POP_scen,GDP_SCEN,DIET_SCEN,LOSS_SCEN,Biofuel_scen,fproduct,prodgroup,year,prot,fat,cal,prot_hist,fat_hist,cal_hist,protkg,fatkg,kcalkg,cocapday,cocapday_hist,food_waste,shfood,cotot,consocap,biofuel,biofuelshift,biofueluse_hist,consononfood,nonfoodshift,consofood,foodshift,incelas,consofoodhist,cocap2000,gdpcap,gdpcap2000,gdp,gdpshift,gdp2000,pop,popshift,pop2000,
+1_calc_human_demand,UNPopSexAge,Sex,YEAR,0_4,5_9,10_14,15_19,20_24,25_29,30_34,35_39,40_44,45_49,50_54,55_59,60_64,65_69,70_74,75_79,80_84,85_89,90_94,95_99,100+,Total,
+1_calc_human_demand,calc_dmer_activitylevel,Sex,YEAR,Activity_Scen,Pop_Scen,PopShift,ScenShiftConv,0_4,5_9,10_14,15_19,20_24,25_29,30_34,35_39,40_44,45_49,50_54,55_59,60_64,65_69,70_74,75_79,80_84,85_89,90_94,95_99,100+,Total,
+1_calc_human_demand,Calc_min_daily_kcal,Year,Activity_Scen,Pop_Scen,PopShift,Population,min_daily_kcal,
+1_data_demand,OtherDiets,PROD_GROUP,Fat_diet,NatHealthyDiet,
+1_data_demand,FoodLossByGroup,REGION,PROD_GROUP,LOSS_PROD_GROUP,ShLossProcessingPackaging,ShLossDistributionRetail,ShLossConsumptin,ShLossDistribConso,
+1_data_demand,MissingGroupsCalories,Element,Item,Prod_group,Year,Value,
+1_data_demand,MapMissingCalories,Item,PROD_GROUP,
+1_data_demand,MapOECDProduct,Commodity,Fproduct,
+1_data_demand,BiofuelDataOECD,Commodity,Fproduct,Variable,Time,Value_1000T,
+1_data_demand,BiofuelFeedstockConversion,Fproduct,BiofuelType,BiofYield,
+1_data_demand,BiofuelEnergyConversion,BiofuelType,Tonne,Liter,Toe,MJ,
+1_data_demand,FAOFoodPerCapita,Year,Food_group,Value,waste,food_intake,
+1_data_demand,AndradeBiofuels,Scenario,Year,Product,Value,
+1_data_demand,gdp_pop_hist,YEAR,GDPT,POPT,GDP_shift,POP_shift,
+1_data_demand,prod_balance,PRODUCT,Woodunit,YEAR,DataProcProduct,IfFeedReq,FEED,FOOD,SEED,CONSO_TOT,EXPORTS,IMPORTS,OTHUSE,PROCESS,PROD,LOSS,STOCK,CHECK,NetExports,NetImports,sh_food_conso,conso_cap,sh_waste,sh_impo,sh_impo_cor,sh_expo,biofueluse,shnonfoodnonbiof,
+1_data_demand,map_group,PRODUCT,PROD_GROUP,Lprod_group,full group name,
+1_data_demand,food_indic,PRODUCT,YEAR,CALO,FAT,PROT,FCAP,shfood,
+1_data_demand,FAOPrices,Product,year,ProdPrice_USD,ProdPrice_local,ExportPrice,ImportPrice,PriceUSD,
+1_data_demand,Table74,Fproduct,
+1_data_demand,WoodmapUnit,Product,Woodunit,Unit,
+1_data_demand,EATLancet_rec,EAT_group,PROD_GROUP,kcal,avg_macronut,min_macronut,max_macronut,coefmax,maxkcal,kcal_adj,maxkcal_adj,
+2_calc_livestock,calc_livestocknb,Importscen,ExportScen,FixTradeScen,LIVEscen,PHLoss_scen,ANIMAL_GLOBIOM,ANIMAL,FPRODUCT,YEAR,RealHerd,herdcount,herd,pdtyanim,pdtyanimshift,pdtyanim2000,prodanim,shloss,shloss_hist,exportanim,shanimprod,stockvar,prodag,finalExports,exportsAdj,exports,exports_cst,finalimports,importsAdj,imports,importsh_scen,importsh,consotot,
+2_calc_livestock,Calc_Feed,LIVE_SCEN,ANIMAL_GLOBIOM,ANIMAL,FeedType,FPRODUCT,YEAR,cofeed,feedreq,feedreqshift,feedreq2000,herd,
+2_calc_livestock,Calc_pasture,LIVE_SCEN,Livedens_scen,ANIMAL_GLOBIOM,ANIMAL,YEAR,TotN2O,TotCH4,tN2O_tlu,tCH4_TLU,Pasture,RumDensity,ShiftRumDensity,RumDensity2000,Herd,
+2_calc_livestock,ChkHerd,ANIMAL,Ruminant,YEAR,Chkherd,HistHerdTLU,TLUperhead,HistHerdHeads,GlobTLU,HerdTLU,
+2_calc_livestock,Chk_animproducts,Fproduct,Year,CalcConso,HistConso,DiffConso,Imports,HistImports,DiffImports,Exports,HistExports,DiffExports,CalcProd,HistProd,DiffProd,StockVar,
+2_data_livestock,FAOLivePdty,ANIMAL,Meat,2000,2005,2010,2015,growth,
+2_data_livestock,FAOLiveProd2015,Item,Column1,Year,Value,prod1000t,
+2_data_livestock,data_live,ANIMAL_GLOBIOM,ANIMAL,RUMINANT,LiveItem,ItemCat,TLUperHead,TLU,feedreq,yield,feedtot,prodtot,shanimprod,tonneN,tonne,tCH4_tlu,tN2O_tlu,
+2_data_livestock,landcover,Lctype_esa,Lctype,year,VALUE,
+2_data_livestock,LiveItemMap,LiveItem,ItemCat,
+2_data_livestock,FAOheads,FAO_ANIMAL,ANIMAL,YEAR,Anim,EXPO,IMPO,XVAL,MVAL,
+2_data_livestock,FAOAnimalMap,FAO_ANIMAL,ANIMAL,
+2_data_livestock,FeedCropMap,Feed,Crop,
+2_data_livestock,Herdcount,ANIMAL,Product,Herdcount,
+2_data_livestock,MapAnimal,ANIMAL_GLOBIOM,ANIMAL,Ruminant,Description,
+3_calc_crops,calc_crops,IMPORT_SCEN,EXPORT_SCEN,FixTradeScen,CROP_SCEN,CC_Scen,PHLoss_Scen,FPRODUCT,CROP,YEAR,PlantArea,HarvInt,ShiftHarvInt,HarvIntHist,Harvarea,Fprodcount,Pdty,CCshift,sharea_rf,sharea_irr,Pdtyshift,Pdty2000,ProdCrop,ProdInput,shlossinput,shlossinput_hist,finalimportinput,adjimportinput,ImportInputProc,ImportShareInput_scen,ImportShareInput,InputProc,ProcCoef,ProcCoefshift,ProcCoef2000,ProdFproduct,finalexports,exports_adj,stockvar,exports,exports_cst,finalimports,imports_adj,imports,shlossfproduct,shlossfproduct_hist,importshare_scen,importshare,feed,consohum,
+3_calc_crops,ChkCrops,FPRODUCT,CROP,YEAR,DiffHarvArea,HistHarvARea,CalcHarvARea,DiffProd,HistProd,CalcProd,DiffExports,HistExports,Exports,DeffImports,HistImports,Imports,DiffFeed,HistFeed,CalcFeed,DiffConso,HistConso,CalcConso,
+3_data_crops,map_fproduct_crop,FPRODUCT,CROP,F_Proc,proc,prod,proccoef,
+3_data_crops,FAOCropProd,Crop,Year,Area,Prod,Yield,loss,shloss,
+3_data_crops,Fprodcount,FPRODUCT,CROP,Prodcount,
+3_data_crops,FAOCropPdty,Crop,2000,2005,2010,Growth_00_05,Growth_05_10,Growth,
+3_data_crops,Byproduct,FPRODUCT,BYPRODUCT,
+3_data_crops,IrrigatedCropArea,Crop,IrrArea,RfArea,
+4_calc_land,calc_land_cor,LANDscen,AFFORscen,PAScen,Year,InitPasture,AfforPasture,CalcPasture,TargExpPasture,MaxExpPasture,ExpPasture,InitCropland,AfforCropland,CalcHarvArea,CalcOtherCrop,CalcCropland,TargExpCropland,MaxexpCropland,ExpCropland,InitUrban,CalcUrban,ExpUrban,TargExpansion,MaxExpansion,Reduction,shForLoss,ProtecForest,InitNonProtecForest,ExpForest,CalcNonProtecForest,CalcForest,ProtecOtherLand,InitOtherLand,AfforOtherland,ExpOtherland,CalcOtherLand,InitNewForest,ExpNewForest,CalcNewForest,TotalLand,NonFeasibleExp,Shcropexp,Shpastexp,Nonfeascropland,Nonfeaspasture,Maxharvarea,MaxPasture,AdjHarvArea,AdjPasture,TotallandFin,
+4_data_land,NationalLandCover,LC_national,LCAgg,ProtectedAreas,Year,Area1000ha,
+4_data_land,MapESAShort,LULC_ESA,Lcdet,
+4_data_land,PAIntactLandEcoregion,Ecoregion,LULC_ESA,LCdet,LCagg,TotalArea,PA,Intact_PA,Intact_noPA,
+4_data_land,ESALandArea,LCdet,LCagg,year,AreaESA,
+4_data_land,CalcHistLand,LCTYPE,Source,shforloss_00_05,loss_00_05,abs_10_15,abs_05_10,abs_00_05,annualrate_00_15,annualrate_10_15,annualrate_05_10,annualrate_00_05,Land2015,Land2010,Land2005,Land2000,
+4_data_land,MapLCAgg,Lcdet,Lcagg,
+4_data_land,FAOLandArea,Year,LC_FAO,Lcagg,AreaFAO,
+4_data_land,MapFAOLCAgg,LC_FAO,LCAgg,
+4_data_land,HansenForArea,Year,Above10pc,Above15pc,Above20pc,Above25pc,Above30pc,Above50pc,Above75pc,Forest,Deforestation,
+4_data_land,ProtectedAreas,LC_type,Ia,Ib,II,Other,Total,
+4_data_land,MapNationalLcAgg,LC_national,LC_agg,
+5_feas_livestock,Calc_FeasRuminants,ANIMAL_GLOBIOM,ANIMAL,YEAR,FeasHerd,Rumdensity,FeasPasture,AdjPasture,Pasture,
+5_feas_livestock,Calc_FeasFeed,FixTradeScen,ANIMAL_GLOBIOM,ANIMAL,FeedType,Fproduct,Crop,YEAR,FinFeasPasture,rumdensity,feasherd,Feascofeed,Feascofeed1,feedreq,Feasherd1,maxfeasfeed,adjfeedfixtrade,adjfeed,proccoef,losses,adjcropfin,targFeed,
+5_feas_livestock,Calc_FeasProdLivestock,FixTradeScen,ANIMAL_GLOBIOM,ANIMAL,FPRODUCT,YEAR,FeasConso,stockvar,losses,shloss,Importanim,Feasexpanim,shanimprod,FeasExports,Exports,Imports,FeasProd,AdjCoef,TargProdAnim,FeasProdanim,pdtyanim,FinFeasHerd,
+6_feas_crops,Calc_feasCrops,FixTradeScen,FPRODUCT,CROP,YEAR,chkbal2,CorExports,CorImports,chkBal,StockVar,losses,FeasProcSupply,ProcDemand,FeasConsohum,FeasFeed,FeasImports,FeasExports,ProcCoef,shloss,FeasProd,Pdty,FeasHarvArea,AdjDemand,adjconsofixtrade,losses_pre,AdjHarvArea,Harvarea,FeasPlantArea,PlantArea,
+7_feas_consohum,Calc_FeasConsoHum,fproduct,prodgroup,byproduct,year,prot,fat,cal,protkg,fatkg,kcalkg,cocapday,pop,food_waste,shnonfood,shfood,difffeastarg,feascotot,targcotot,biofueluse,
+8_calc_emissions,Calc_rumemis,LIVE_SCEN,ANIMAL_GLOBIOM,ANIMAL,YEAR,TotN2O,TotCH4,tN2O_shift,tCH4_shift,tN2O_tlu,tCH4_TLU,Herd,
+8_calc_emissions,calc_monogemis,LIVE_SCEN,ANIMAL_GLOBIOM,ANIMAL,YEAR,TotN2O,TotCH4,N2O_shift,CH4_shift,N2O_tlu,CH4_TLU,Herd,
+8_calc_emissions,calc_cropemis,CROP,CC_scen,YEAR,TotCO2e,TotCO2,TotN2O,TotCH4,CropResN2O_ha,EngyCO2_ha,EngyCH4_ha,EngyN2O_ha,Ccshift,sharea_rf,sharea_irr,FertN2O_ha,RiceCH4_ha,Production,HarvArea,
+8_calc_emissions,calc_landemis,LandCoverInit,YearStart,YearEnd,ToCropland,ToPasture,ToUrban,ToNewForest,ToRegeneration,CO2_init,CO2_Cropland,CO2_Pasture,CO2_Urban,EF_Cropland,EF_Pasture,EF_Urban,SF_Regeneration,SF_Afforestation,CO2duetoCropland,CO2duetoPasture,CO2duetoUrban,CO2duetoRegeneration,CO2duetoPastAbandoned,CO2SeqAffor,CO2Land,
+8_calc_emissions,calc_biofuelsavings,Feedstock,BiofuelType,Year,biofueluse,ProcCoef,MJContent,ToeContent,biofuelprod,Mtoe_biofuelprod,CO2savingcoef,CO2savings,
+8_data_emissions,FAOTotalEmis,Source,category,YEAR,MethaneCO2e,NitrogenCO2e,AllCO2e,
+8_data_emissions,FAOLiveEmis,Animal,YEAR,Herd,EFCH4_head,MS_N2O_N,MS_N,MLP_N2O_N,MLP_N,MMCH4_head,MM_N2O_N,MM_N,
+8_data_emissions,FAOCropEmis,CROP,YEAR,Area,CR_N2O,CR_N,CR_CO2e_t,BCR_DM,BCR_CH4_DM,BCR_N2O_DM,RiceCH4,BB_DM,prod,
+8_data_emissions,FAOavgCropEF,YEAR,Cropland,Engy_NO2,Engy_CH4,Engy_CO2,EngyN2O_ha,EngyCH4_ha,EngyCO2_ha,Fert_NO2,FertN2O_ha,
+8_data_emissions,FAOLandCarbon,LC,Source,year,carbon,C_biomass,CO2_C,CO2_ha,
+8_data_emissions,LandCarbon,LC,% forest CO2 stock,CO2_ha,
+8_data_emissions,BiofuelSavingsData,Feedstock,BiofuelType,IPCCGasoline,IPCCDieselOil,RFAGasoline,RFADieselOil,Biofuel_CO2,Saving_CO2,
+8_data_emissions,MapGHGSources,Source,Category,
+9_calc_water,calc_crop_wf,fproduct,WF_scen,CC_scen,year,production,WF_green_fprod,WF_blue_fprod,WF_grey_fprod,shWF_blue,wf_green,wf_blue,wf_grey,
+9_calc_water,calc_live_wf,fproduct,WF_scen,year,production,WF_green_fprod,WF_blue_fprod,WF_grey_fprod,shWF_blue,wf_green,wf_blue,wf_grey,
+9_data_water,EmbedWaterCrop,Prod_Crop,fproduct,wf_type,wf_value,
+9_data_water,EmbedWaterLive,Prod_Live,fproduct,wf_type,wf_value,
+9_data_water,MapWaterProduct,WaterProduct,Fproduct,
+9_data_water,Hist_waterfootprint,Green_crop,Blue_crop,Grey_crop,Green_live,Blue_live,Blue_indu,Grey_indu,Blue_dome,Grey_dome,Green_tot,Blue_tot,Grey_tot,

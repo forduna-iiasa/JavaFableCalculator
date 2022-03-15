@@ -39,13 +39,19 @@ public class LoadEquation {
         numSheets = workbook.getNumberOfSheets();
 
         for(int i = 2; i< numSheets; i++){
+            String colnames="";
             sheet = workbook.getSheetAt(i);
             String na = workbook.getSheetAt(i).getSheetName();
             wrSheet.write(na);
             wrSheet.newLine();
             tables = sheet.getTables();
             for (XSSFTable t : tables) {
-                String v = na+","+t.getName();
+                List <XSSFTableColumn> totcols = t.getColumns();
+                for(int y=0;y<totcols.size();y++){
+                    colnames += totcols.get(y).getName()+",";
+                }
+                String v = na+","+t.getName()+","+ colnames;
+                colnames="";
                 wrTable.write(v);
                 wrTable.newLine();
                 //SaveTable(t,sheet,paisx,t.getName());

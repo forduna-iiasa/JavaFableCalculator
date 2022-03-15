@@ -90,7 +90,7 @@ public class NodeMetaCase {
             String casi = Tabl.get(i).toString();
             String [] dat = casi.split(",");
             aux = Mc.retrieveMc_name(Mc,dat[0].toString());
-            aux.Tables.addTblBrother(aux.Tables,dat[1].toString());
+            aux.Tables.addTblBrother(aux.Tables,dat[1].toString(),i);
             }
         return Mc;
     }
