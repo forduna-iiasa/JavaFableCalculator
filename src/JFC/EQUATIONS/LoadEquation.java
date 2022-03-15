@@ -54,7 +54,7 @@ public class LoadEquation {
                 colnames="";
                 wrTable.write(v);
                 wrTable.newLine();
-                //SaveTable(t,sheet,paisx,t.getName());
+                SaveTable(t,sheet,paisx,t.getName());
             }
         }
         wrTable.flush();
@@ -70,8 +70,8 @@ public class LoadEquation {
     private void SaveTable(XSSFTable t, XSSFSheet shet, String paisx2, String Tabla) {
         String chivo="",vals="";
         DataFormatter dataFormatter = new DataFormatter();
-        chivo = "H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\equations.txt";
-                //shet.getSheetName()+".txt";
+        //chivo = "H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\equations.txt";
+        chivo = "C:\\Calculators\\formulas\\"+Tabla+".txt";
 
         int startRow = t.getStartCellReference().getRow();
         int endRow = t.getEndCellReference().getRow();
@@ -105,21 +105,21 @@ public class LoadEquation {
                     switch (cel_Type){
                         case STRING:
 //                            vals += cell.getStringCellValue()+"\t";
-                            vals += "\t"+dataFormatter.formatCellValue(cell);
+                            vals += dataFormatter.formatCellValue(cell)+"\t";
                             break;
                         case FORMULA:
-                            vals += "\t"+cell.getCellFormula();
+                            vals += cell.getCellFormula()+"\t";
                             //vals += ","+cell.getRawValue();
                             break;
                         case NUMERIC:
 //                             vals += ""+(double)cell.getNumericCellValue()+"\t";
-                            vals += "\t"+dataFormatter.formatCellValue(cell);
+                            vals += dataFormatter.formatCellValue(cell)+"\t";
                             break;
                         case BLANK:
                             vals += "\t";
                             break;
                         case ERROR:
-                            vals += "\t"+dataFormatter.formatCellValue(cell);
+                            vals += dataFormatter.formatCellValue(cell)+"\t";
                             break;
 
 

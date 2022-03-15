@@ -1,21 +1,14 @@
 package JFC.IIASA;
 
-import JFC.DATA.DataTable;
 import JFC.EQUATIONS.LoadEquation;
 import JFC.STRUCTS.NodeMetaCase;
 import JFC.STRUCTS.NodeTable;
 import JFC.STRUCTS.RowCols;
-import com.mysql.cj.xdevapi.FindStatement;
 import org.apache.poi.openxml4j.util.ZipSecureFile;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFTable;
-import org.apache.xmlbeans.SchemaTypeLoaderException;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
@@ -38,7 +31,7 @@ public class Main {
         //new Main().PrepareCountryFiles();
         CalcSheets = new LoadSheetNames().GetData();
         CalcTables = new LoadTableNames().GetData();
-        Equations = new LoadEquations().GetData();
+
         //region build mcs LA hoja es el mc y sus hijos son las tablas que tiene cada hoja
         /* NodeMetaCase LinkerMc;
         NodeMetaCase Mcs = new NodeMetaCase();
@@ -65,13 +58,23 @@ public class Main {
             auxTablesRoot = RowsRoot.iniRow(auxTablesRoot,columns,init);
         }
         //endregion
-        //region recuperamos tabla a agregar renglones y agregamos sus renglones
-        auxTablesRoot = TablesRoot.retrieve(TablesRoot,"PostHarvestLoss_Scen");
-        RowCols auxRows = auxTablesRoot.Rows;
-        for(int idrow=0;idrow<Equations.size();idrow++){
-            RowsRoot = RowsRoot.addRow(auxRows, (String) Equations.get(idrow),idrow);
+        //region recuperamos tabla a agregar renglones y agregamos sus renglones incluyendo las columnas del mismo
+        for(int init=0;init<CalcTables.size();init++){
+            String columns = (String) CalcTables.get(init);
+            String[] getTabl = columns.split(",");
+            //System.out.println("En Tabla> "+getTabl[1]);
+
+            Equations = new LoadFileEquations().GetData(getTabl[1]);
+            auxTablesRoot = TablesRoot.retrieve(TablesRoot,getTabl[1]);
+            RowCols auxRows = auxTablesRoot.Rows;
+            for(int idrow=0;idrow<Equations.size();idrow++){
+                RowsRoot = RowsRoot.addRow(auxRows, (String) Equations.get(idrow),idrow);
             }
+        }
+
       //endregion
+        //asi recuperamos una tabla de la estructura
+        auxTablesRoot = TablesRoot.retrieve(TablesRoot,"Diet_scen");
 
         while (numCh < tope) {
             car = cad.charAt(numCh);

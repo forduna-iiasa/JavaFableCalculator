@@ -8,15 +8,15 @@ import java.util.ArrayList;
  *
  * @author orduna
  */
-public class LoadEquations {
+public class LoadFileEquations {
     ArrayList hojas;
 
-    public ArrayList GetData() {
+    public ArrayList GetData(String chivo) {
         hojas = new ArrayList();
         File file = null;
         FileReader fr = null;
         BufferedReader br = null;
-        String Location = "H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\formulas.txt";
+        String Location = "C:\\Calculators\\aa\\"+chivo+".txt";
         try {
             // definition of the name of the file, using the buffer and read line by line
             file = new File (Location);

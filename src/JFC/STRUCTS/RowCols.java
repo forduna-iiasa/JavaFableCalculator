@@ -49,19 +49,34 @@ public class RowCols {
         RowCols aux = new RowCols();
         aux.setIdrow(idrow);
         // se agregara el renglon
-        aux.setValue(data[1]);
-        if(root.NextRow != null){
-            last = root.LastRow;
-            last.NextRow = aux;
-            aux.PrevRow = last;
-        }else{
-            root.NextRow = aux;
-            aux.PrevRow = root;
-        }
-        root.LastRow = aux;
+        if(data.length > 1) {
+            aux.setValue(data[0]);
+            if (root.NextRow != null) {
+                last = root.LastRow;
+                last.NextRow = aux;
+                aux.PrevRow = last;
+            } else {
+                root.NextRow = aux;
+                aux.PrevRow = root;
+            }
+            root.LastRow = aux;
 //se agregan las columnas en 1 ya que ahi inician las formulas
-        for(int o=2;o<data.length;o++){
-            aux = aux.addCol(aux,data[o],o);
+            for (int o = 1; o < data.length; o++) {
+                aux = aux.addCol(aux, data[o], o);
+            }
+        }else{
+    if(data.length == 1){
+            aux.setValue(data[0]);
+            if (root.NextRow != null) {
+                last = root.LastRow;
+                last.NextRow = aux;
+                aux.PrevRow = last;
+            } else {
+                root.NextRow = aux;
+                aux.PrevRow = root;
+            }
+            root.LastRow = aux;
+        }
         }
         return MainRootRow;
     }
