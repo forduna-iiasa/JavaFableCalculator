@@ -1,8 +1,13 @@
 package JFC.IIASA;
 
+import JFC.EQUATIONS.LoadEquation;
+import JFC.STRUCTS.NodeMetaCase;
 import JFC.STRUCTS.NodeTable;
 import JFC.STRUCTS.RowCols;
+import org.apache.poi.openxml4j.util.ZipSecureFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BuildMcTables {
@@ -54,4 +59,80 @@ public class BuildMcTables {
         //endregion
         return TablesRoot;
     }
+    private NodeMetaCase BuildMcs(NodeMetaCase linkerMc, ArrayList calcSheets) {
+        for(int i=0;i<calcSheets.size();i++){
+            linkerMc.addMcBrother(linkerMc,i,calcSheets.get(i).toString());
+        }
+        return linkerMc;
+    }
+    public void PrepareFiles() throws IOException {
+        int step = 0;
+        int totalFiles = 0;
+        ZipSecureFile.setMinInflateRatio(0);
+        String[] ids;
+        String[] scen;
+        String[] iteration;
+        File[] listOfFiles;
+        String[] files;
+        //File folder = new File("H:\\LinkerMarckovModel\\calcs\\");
+        //I:\javalera\Calculators\calcs P:\scnt\ScenathonExtractions061221,radeAdj_Sus
+
+        File folder = new File("C:\\Calculators\\");
+        listOfFiles = folder.listFiles();
+        File file;
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+            System.out.println(i);
+            if (listOfFiles[i].isFile()) {
+                if (listOfFiles[i].getName().endsWith(".xlsx")) {
+
+                    String f = listOfFiles[i].getName();
+                    ids = f.split("-");
+//              System.out.println(f);
+                    scen = ids[1].split("_");
+                    iteration = ids[2].split("_");
+                    System.out.println("totalFiles:" + totalFiles);
+                    step = 0;
+                    new LoadEquation().ReedCalcShTbl(listOfFiles[i].getAbsolutePath(), iteration[1]);
+                }
+                totalFiles++;
+            }
+        }
+    }
+
+    public void PrepareCountryFiles() throws IOException {
+        int step = 0;
+        int totalFiles = 0;
+        ZipSecureFile.setMinInflateRatio(0);
+        String[] ids;
+        String[] scen;
+        String[] iteration;
+        File[] listOfFiles;
+        String[] files;
+        //File folder = new File("H:\\LinkerMarckovModel\\calcs\\");
+        //I:\javalera\Calculators\calcs P:\scnt\ScenathonExtractions061221,radeAdj_Sus
+
+        File folder = new File("H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\");
+        listOfFiles = folder.listFiles();
+        File file;
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+            System.out.println(i);
+            if (listOfFiles[i].isFile()) {
+                if (listOfFiles[i].getName().endsWith(".xlsx")) {
+
+                    String f = listOfFiles[i].getName();
+                    ids = f.split("-");
+//              System.out.println(f);
+                    scen = ids[1].split("_");
+                    iteration = ids[2].split("_");
+                    System.out.println("totalFiles:" + totalFiles);
+                    step = 0;
+                    new LoadEquation().ReedCalcShTbl(listOfFiles[i].getAbsolutePath(), iteration[1]);
+                }
+                totalFiles++;
+            }
+        }
+    }
+
 }

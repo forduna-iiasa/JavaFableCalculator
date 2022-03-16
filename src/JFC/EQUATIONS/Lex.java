@@ -8,51 +8,54 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Lex {
+    MatrixQ MatLex;
+    ArrayList CalcTables;
+    ArrayList CalcSheets;
+   public Lex() throws FileNotFoundException {
+       MatLex = new MatrixQ();
+       MatLex.MatrixLoadFile();
+       CalcSheets = new LoadSheetNames().GetData();
+       CalcTables = new LoadTableNames().GetData();
+    }
     public String getTokens(String Cad) throws FileNotFoundException {
-        MatrixQ MatLex = new MatrixQ();
-        MatLex.MatrixLoadFile();
         int tope = 0, numCh = 0, col = 0, token = 0, ren = 0;
         int isStatement;
         boolean isHoja = false;
         boolean isTable = false;
-        ArrayList CalcTables;
-        ArrayList CalcSheets, Equations;
         String toks = "", variable = "", cadena = "";
         tope = Cad.lastIndexOf("");
         char car = ' ';
-        CalcSheets = new LoadSheetNames().GetData();
-        CalcTables = new LoadTableNames().GetData();
-
         while (numCh < tope) {
             car = Cad.charAt(numCh);
             col = MatLex.getCol(car);
             token = MatLex.getToken(ren, col);
             if (token < 0) {
-                //   toks = toks +  token + ",";
-                if (token == -17 || token == -1 || token == -2 || token == -3) {
+                if (token == -1 || token == -2 || token == -3 || token == -17) {
                     numCh--;
                     if (token == -1) {
                         isStatement = FindStatement(cadena);
                         if (isStatement >= 100) {
-                            System.out.println("es comando->" + cadena + "[" + isStatement + "]");
-                            toks = toks + isStatement + ",";
+                            //System.out.println("es comando->" + cadena + "[" + isStatement + "]");
+                            //toks = toks + isStatement + ",";
+                            token = isStatement;
                             cadena = "";
                         } else {
                             isHoja = FindSheet(CalcSheets, cadena);
                             if (isHoja == true) {
-                                System.out.println("es Hoja->" + cadena + "[" + 200 + "]");
-                                toks = toks + "200,";
+                               // System.out.println("es Hoja->" + cadena + "[" + 200 + "]");
+                                //toks = toks + "200,";
+                                token = 200;
                                 cadena = "";
 
                             }
                             if (isHoja == false) {
                                 isTable = FindTable(CalcTables, cadena);
                                 if (isTable == true) {
-                                    System.out.println("es Tabla->" + cadena + "[" + 300 + "]");
-                                    toks = toks + "300,";
+                                  //  System.out.println("es Tabla->" + cadena + "[" + 300 + "]");
+                                    //toks = toks + "300,";
+                                    token = 300;
                                     cadena = "";
                                 } else {
-                                    toks = toks + "-1,";
                                     cadena = "";
                                 }
                             }
@@ -60,6 +63,7 @@ public class Lex {
                     }
                     cadena = "";
                     variable = variable + cadena;
+                    toks = toks + token + ",";
                 } else {
                     variable = variable + car;
                     toks = toks + token + ",";
@@ -119,7 +123,9 @@ return toks;
     }
     public boolean FindTable(ArrayList LstTables, String name){
         for(int i =0; i<LstTables.size();i++) {
-            if (LstTables.get(i).equals(name)) {
+            String cad = LstTables.get(i).toString();
+            String[] tlbs = cad.split(",");
+            if (tlbs[1].equals(name)) {
                 return true;
             }
         }
