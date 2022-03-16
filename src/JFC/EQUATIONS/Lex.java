@@ -5,17 +5,22 @@ import JFC.IIASA.LoadTableNames;
 import JFC.IIASA.MatrixQ;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Lex {
     MatrixQ MatLex;
     ArrayList CalcTables;
     ArrayList CalcSheets;
+    public ArrayList Cads;
+    public ArrayList Toks;
    public Lex() throws FileNotFoundException {
        MatLex = new MatrixQ();
        MatLex.MatrixLoadFile();
        CalcSheets = new LoadSheetNames().GetData();
        CalcTables = new LoadTableNames().GetData();
+       Cads = new ArrayList();
+       Toks = new ArrayList();
     }
     public String getTokens(String Cad) throws FileNotFoundException {
         int tope = 0, numCh = 0, col = 0, token = 0, ren = 0;
@@ -25,12 +30,15 @@ public class Lex {
         String toks = "", variable = "", cadena = "";
         tope = Cad.lastIndexOf("");
         char car = ' ';
+        Cads.clear();
+        Toks.clear();
         while (numCh < tope) {
             car = Cad.charAt(numCh);
             col = MatLex.getCol(car);
             token = MatLex.getToken(ren, col);
             if (token < 0) {
                 if (token == -1 || token == -2 || token == -3 || token == -17) {
+                    Cads.add(cadena);
                     numCh--;
                     if (token == -1) {
                         isStatement = FindStatement(cadena);
@@ -64,9 +72,12 @@ public class Lex {
                     cadena = "";
                     variable = variable + cadena;
                     toks = toks + token + ",";
+                    Toks.add(token);
                 } else {
+                    Cads.add(car);
                     variable = variable + car;
                     toks = toks + token + ",";
+                    Toks.add(token);
                 }
                 ren = 0;
 

@@ -118,4 +118,53 @@ public class NodeTable {
         }
         return RowData;
     }
+    public int getColLocation(NodeTable TablesRoot, String TableName, String ColName){
+        NodeTable RetrievedTable;
+        RowCols row;
+        int found=0;
+        //asi recuperamos una tabla de la estructura
+        RetrievedTable = TablesRoot.retrieveTable(TablesRoot,TableName);
+        row = RetrievedTable.Rows;
+        while(row.getIdrow()!= 0){
+            row = row.NextRow;
+        }
+        while(row.NextCol != null){
+            if(row.getValue().equals(ColName)){
+               found = row.getIdCol();
+               return found;
+            }else {
+                row = row.NextCol;
+            }
+            if(row.NextCol == null){
+                found = row.getIdCol();
+                return  found;
+            }
+
+        }
+        return found;
+    }
+
+    public String getCol(NodeTable TablesRoot, String TableName, int RowId, int ColId){
+        String RowData = "";
+        NodeTable RetrievedTable;
+        RowCols row,col;
+        //asi recuperamos una tabla de la estructura
+        RetrievedTable = TablesRoot.retrieveTable(TablesRoot,TableName);
+        row = RetrievedTable.Rows;
+        while(row.getIdrow()!= RowId){
+            row = row.NextRow;
+        }
+        while(row.NextCol != null){
+            if(row.getIdCol() == ColId){
+               RowData = row.getValue();
+            }else{
+                row = row.NextCol;
+            }
+            if(row.NextCol == null){
+                RowData = row.getValue();
+            }
+
+        }
+        return RowData;
+    }
 }
