@@ -68,7 +68,7 @@ public class Main {
             auxTablesRoot = TablesRoot.retrieve(TablesRoot,getTabl[1]);
             RowCols auxRows = auxTablesRoot.Rows;
             for(int idrow=0;idrow<Equations.size();idrow++){
-                RowsRoot = RowsRoot.addRow(auxRows, (String) Equations.get(idrow),idrow);
+                RowsRoot = RowsRoot.addRow(auxRows, (String) Equations.get(idrow),idrow+1);
             }
         }
 

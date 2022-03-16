@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class RowCols {
     public int Terminal;
     public int idrow;
+    public int idCol;
     public String Name;
     public String value;
     RowCols NextRow,NextCol,PrevRow,PrevCol,LastRow,LastCol;
@@ -32,13 +33,14 @@ public class RowCols {
     public NodeTable iniRow(NodeTable rooTable, String rowdata,int idrow){
         String[] data = rowdata.split(",");
         RowCols MainRootRow = new RowCols();
-        MainRootRow.setIdrow(idrow);
+        MainRootRow.setIdrow(0);
+        MainRootRow.setIdCol(0);
         // se agregara el primer renglon solo para los nombres de las columnas y si es terminal o no
         MainRootRow.setValue(data[2]);
         rooTable.Rows = MainRootRow;
-        //se agregan las demas columnas, incia en 2 ya que ahi inician los nombres de las columnas.
+        //se agregan las demas columnas, incia en 3 para que no se repita la primera columna --ya que ahi inician los nombres de las columnas.
         for(int o=3;o<data.length;o++){
-            MainRootRow = MainRootRow.addCol(MainRootRow,data[o],o);
+            MainRootRow = MainRootRow.addCol(MainRootRow,data[o],0,o-2);
         }
         return rooTable;
     }
@@ -48,6 +50,7 @@ public class RowCols {
         RowCols last;
         RowCols aux = new RowCols();
         aux.setIdrow(idrow);
+        aux.setIdCol(0);
         // se agregara el renglon
         if(data.length > 1) {
             aux.setValue(data[0]);
@@ -62,7 +65,7 @@ public class RowCols {
             root.LastRow = aux;
 //se agregan las columnas en 1 ya que ahi inician las formulas
             for (int o = 1; o < data.length; o++) {
-                aux = aux.addCol(aux, data[o], o);
+                aux = aux.addCol(aux, data[o], idrow,o);
             }
         }else{
     if(data.length == 1){
@@ -81,11 +84,12 @@ public class RowCols {
         return MainRootRow;
     }
 
-    public RowCols addCol(RowCols MainRootRow, String value, int idrow){
+    public RowCols addCol(RowCols MainRootRow, String value, int idrow, int id){
         RowCols root = MainRootRow;
         RowCols last;
         RowCols aux = new RowCols();
         aux.setIdrow(idrow);
+        aux.setIdCol(id);
         aux.setValue(value);
         if(root.NextCol != null){
             last = root.LastCol;
@@ -113,6 +117,14 @@ public class RowCols {
 
     public void setIdrow(int idrow) {
         this.idrow = idrow;
+    }
+
+    public int getIdCol() {
+        return idCol;
+    }
+
+    public void setIdCol(int idCol) {
+        this.idCol = idCol;
     }
 
     /*public RowCols addRowNames(RowCols rowsRoot, String s,int idrow) {
