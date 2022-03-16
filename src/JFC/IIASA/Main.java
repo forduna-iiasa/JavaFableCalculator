@@ -17,13 +17,17 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //Main m = new Main();
         NodeTable McTables = new BuildMcTables().BuildTables();
-        NodeTable RetrievedTable;
+        //NodeTable RetrievedTable;
         //asi recuperamos una tabla de la estructura
-        RetrievedTable = McTables.retrieve(McTables,"Diet_scen");
-        Lex Lexico = new Lex();
-        Lexico.getTokens("fher,WaterUse_Scen,Scen_foodloss,sumif,sumifs,vlookup,3456$%^2345&*%&");
+     //   RetrievedTable = McTables.retrieveTable(McTables,"Diet_scen");
+        ArrayList RowData = McTables.getRow(McTables,"Diet_scen",1);
 
-        
+
+
+        //Lex Lexico = new Lex();
+        //Lexico.getTokens("fher,WaterUse_Scen,Scen_foodloss,sumif,sumifs,vlookup,3456$%^2345&*%&");
+
+
 
     }
 

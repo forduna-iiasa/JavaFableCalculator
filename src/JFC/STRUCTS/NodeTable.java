@@ -36,7 +36,7 @@ public class NodeTable {
     public void setCaso(String caso) {
         this.caso = caso;
     }
-    public NodeTable retrieve(NodeTable root, int id){
+    public NodeTable retrieveTable(NodeTable root, int id){
         while(root.getId() != id){
             if(root.der != null){
                 root = root.der;
@@ -44,7 +44,7 @@ public class NodeTable {
         }
         return root;
     }
-    public NodeTable retrieve(NodeTable root, String idTable){
+    public NodeTable retrieveTable(NodeTable root, String idTable){
         while(!root.getIdTable().equals(idTable)){
             if(root.der != null){
                 root = root.der;
@@ -79,7 +79,7 @@ public class NodeTable {
         return mainRoot;
     }
 
-    public NodeTable retrieveTable(NodeTable root, String id){
+    public NodeTable retrieveTableMc(NodeTable root, String id){
         if(root.getIdTable().equals(id)){
             retrievedTable = root;
         }else{
@@ -97,5 +97,25 @@ public class NodeTable {
             McTables.addTblBrother(McTables,Tabl.get(i).toString(),i);
         }
         return McTables;
+    }
+
+    public ArrayList getRow(NodeTable TablesRoot, String TableName, int RowId){
+        ArrayList RowData = new ArrayList();
+        NodeTable RetrievedTable;
+        RowCols row,col;
+        //asi recuperamos una tabla de la estructura
+        RetrievedTable = TablesRoot.retrieveTable(TablesRoot,TableName);
+        row = RetrievedTable.Rows;
+        while(row.getIdrow()!= RowId){
+            row = row.NextRow;
+        }
+        while(row.NextCol != null){
+            RowData.add(row.getValue());
+            row = row.NextCol;
+            if(row.NextCol == null){
+                RowData.add(row.getValue());
+            }
+        }
+        return RowData;
     }
 }

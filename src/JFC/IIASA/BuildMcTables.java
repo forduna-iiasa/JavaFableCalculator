@@ -37,7 +37,7 @@ public class BuildMcTables {
         for(int init=0;init<CalcTables.size();init++){
             String columns = (String) CalcTables.get(init);
             String[] getTabl = columns.split(",");
-            auxTablesRoot = auxTablesRoot.retrieve(auxTablesRoot,getTabl[1]);
+            auxTablesRoot = auxTablesRoot.retrieveTable(auxTablesRoot,getTabl[1]);
             //agregamos renglon inicial en mc tabla recuperada y sus columnas correspondientes con su nombre
             auxTablesRoot = RowsRoot.iniRow(auxTablesRoot,columns,init);
         }
@@ -49,7 +49,7 @@ public class BuildMcTables {
             //System.out.println("En Tabla> "+getTabl[1]);
 
             Equations = new LoadFileEquations().GetData(getTabl[1]);
-            auxTablesRoot = TablesRoot.retrieve(TablesRoot,getTabl[1]);
+            auxTablesRoot = TablesRoot.retrieveTable(TablesRoot,getTabl[1]);
             RowCols auxRows = auxTablesRoot.Rows;
             for(int idrow=0;idrow<Equations.size();idrow++){
                 RowsRoot = RowsRoot.addRow(auxRows, (String) Equations.get(idrow),idrow+1);
