@@ -144,7 +144,7 @@ public class NodeTable {
         return found;
     }
 
-    public String getCol(NodeTable TablesRoot, String TableName, int RowId, int ColId){
+    public String getCellValue(NodeTable TablesRoot, String TableName, int RowId, int ColId){
         String RowData = "";
         NodeTable RetrievedTable;
         RowCols row,col;
@@ -157,11 +157,15 @@ public class NodeTable {
         while(row.NextCol != null){
             if(row.getIdCol() == ColId){
                RowData = row.getValue();
+               return RowData;
             }else{
                 row = row.NextCol;
             }
             if(row.NextCol == null){
-                RowData = row.getValue();
+                if(row.getIdCol() == ColId){
+                    RowData = row.getValue();
+                    return RowData;
+                }
             }
 
         }

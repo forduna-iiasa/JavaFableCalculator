@@ -29,9 +29,10 @@ public class Main {
             for(int j=0; j<RowData.size();j++){
                 String c = (String) RowData.get(j);
                 String RowTokens = Lexico.getTokens(RowData.get(j).toString());
-                m.getPath(Lexico);
-                //int a = McTables.getColLocation(McTables,"Reporting_aggregate","kcal_hist");
-                //System.out.println("-Rowlocation-"+a);
+             //   m.getPath(Lexico);
+                int a = McTables.getColLocation(McTables,"Reporting_aggregate","kcal_hist");
+                String g = McTables.getCellValue(McTables,"Reporting_aggregate",2,a);
+                System.out.println("-Rowlocation-"+g);
                //
             //    System.out.println("--"+RowData.get(j));
             }
