@@ -23,20 +23,23 @@ public class Main {
         //asi recuperamos una tabla de la estructura
      //   RetrievedTable = McTables.retrieveTable(McTables,"Diet_scen");
 
-        for(int i=1;i<2;i++) {
+        int a = McTables.getColLocation(McTables,"Reporting_aggregate","kcal_hist");
+        String g = McTables.getCellValue(McTables,"Reporting_aggregate",2,a);
+        Lexico.getTokens(g);
+        System.out.println("-Rowlocation-"+g);
+
+       /* for(int i=1;i<2;i++) {
             System.out.println("Row["+i+"]");
             ArrayList RowData = McTables.getRow(McTables, "Reporting_aggregate", i);
             for(int j=0; j<RowData.size();j++){
                 String c = (String) RowData.get(j);
                 String RowTokens = Lexico.getTokens(RowData.get(j).toString());
              //   m.getPath(Lexico);
-                int a = McTables.getColLocation(McTables,"Reporting_aggregate","kcal_hist");
-                String g = McTables.getCellValue(McTables,"Reporting_aggregate",2,a);
-                System.out.println("-Rowlocation-"+g);
+
                //
             //    System.out.println("--"+RowData.get(j));
             }
-        }
+        }*/
 
         //Lex Lexico = new Lex();
         //Lexico.getTokens("fher,WaterUse_Scen,Scen_foodloss,sumif,sumifs,vlookup,3456$%^2345&*%&");
