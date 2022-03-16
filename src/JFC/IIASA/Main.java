@@ -20,9 +20,13 @@ public class Main {
         //NodeTable RetrievedTable;
         //asi recuperamos una tabla de la estructura
      //   RetrievedTable = McTables.retrieveTable(McTables,"Diet_scen");
-        ArrayList RowData = McTables.getRow(McTables,"Diet_scen",1);
-
-
+        for(int i=0;i<7;i++) {
+            System.out.println("Row["+i+"]");
+            ArrayList RowData = McTables.getRow(McTables, "Diet_scen", i);
+            for(int j=0; j<RowData.size();j++){
+                System.out.println("--"+RowData.get(j));
+            }
+        }
 
         //Lex Lexico = new Lex();
         //Lexico.getTokens("fher,WaterUse_Scen,Scen_foodloss,sumif,sumifs,vlookup,3456$%^2345&*%&");
