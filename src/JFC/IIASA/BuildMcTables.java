@@ -10,8 +10,16 @@ public class BuildMcTables {
         ArrayList CalcTables;
         ArrayList CalcSheets,Equations;
         //new Main().PrepareCountryFiles();
-        CalcSheets = new LoadSheetNames().GetData();
         CalcTables = new LoadTableNames().GetData();
+        //region build mcs LA hoja es el mc y sus hijos son las tablas que tiene cada hoja
+        /* NodeMetaCase LinkerMc;
+        NodeMetaCase Mcs = new NodeMetaCase();
+        LinkerMc = Mcs.MainMcRoot();
+        LinkerMc = m.BuildMcs(LinkerMc,CalcSheets);
+        LinkerMc.LinkTables(LinkerMc,CalcTables);
+        */
+        //endregion
+
         //region agregamos todas las tablas como Mc como lo majena excel ya que no se usa SheetName.TableName solo se usa TableName en excel
         NodeTable TablesRoot,auxTablesRoot;
         RowCols RowsRoot = new RowCols();
