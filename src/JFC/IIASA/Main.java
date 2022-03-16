@@ -1,5 +1,6 @@
 package JFC.IIASA;
 
+import JFC.EQUATIONS.Lex;
 import JFC.EQUATIONS.LoadEquation;
 import JFC.STRUCTS.NodeMetaCase;
 import JFC.STRUCTS.NodeTable;
@@ -14,29 +15,15 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        Main m = new Main();
-
-        MatrixQ MatLex = new MatrixQ();
-        MatLex.MatrixLoadFile();
-        int tope = 0, numCh=0,col=0,token=0,ren=0;
-        int isStatement;
-        boolean isHoja=false;
-        boolean isTable=false;
-        ArrayList CalcTables;
-        ArrayList CalcSheets,Equations;
+        //Main m = new Main();
         String cad = "=IF(sumif(vlookup(an[@BiofuelType]=Livedens_scen,WaterUse_Scen,ClimateChange_Scen,PA_Scen,PostHarvestLoss_Scen,Biofuel_Scen,Pop_Scen,GDP_Scen,Diet_scen,Live_scen,Land_Scen,Crop_scen,Scen_foodloss,ImportDef,Product_ImpScen,product_Exports,ExpScenTarget,\"biodiesel\",[@[Biofuel_CO2]]-[@IPCCDieselOil],[@[Biofuel_CO2]]-[@IPCCGasoline])";
-        String toks="",variable="",cadena="";
-        tope = cad.lastIndexOf("");
-        char car = ' ';
-        CalcSheets = new LoadSheetNames().GetData();
-        CalcTables = new LoadTableNames().GetData();
-
         NodeTable McTables = new BuildMcTables().BuildTables();
         NodeTable RetrievedTable;
         //asi recuperamos una tabla de la estructura
         RetrievedTable = McTables.retrieve(McTables,"Diet_scen");
+        new Lex().getTokens(cad);
 
-        while (numCh < tope) {
+        /*while (numCh < tope) {
             car = cad.charAt(numCh);
             col = MatLex.getCol(car);
             token = MatLex.getToken(ren, col);
@@ -99,7 +86,7 @@ public class Main {
 
         }
         System.out.println(variable);
-        System.out.println(toks);
+        System.out.println(toks);*/
 
 
 

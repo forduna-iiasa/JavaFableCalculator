@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Lex {
-    String getTokens(String Cad) throws FileNotFoundException {
+    public String getTokens(String Cad) throws FileNotFoundException {
         MatrixQ MatLex = new MatrixQ();
         MatLex.MatrixLoadFile();
         int tope = 0, numCh = 0, col = 0, token = 0, ren = 0;
