@@ -59,14 +59,31 @@ public class Main {
 
     public void getPath(Lex lexico,NodeTable McTables) throws FileNotFoundException {
         boolean gotTable =false;
+        boolean goVlookup = false;
         String TableName="",ColName="";
+        int col=0;
 
         int tok=0;
         for(int i=0;i<lexico.Toks.size();i++){
             tok = (int) lexico.Toks.get(i);
+            if(tok == 103) {
+                goVlookup = true;
+            }
             if(tok == 300) {
                 TableName = lexico.Cads.get(i).toString();
                 gotTable = true;
+            }
+            if(tok == -17 && goVlookup == true){
+                col = Integer.parseInt(String.valueOf(lexico.Cads.get(i)));
+                ColName = McTables.getColName(McTables,TableName,col-1);//restamos uno por que las columnas inician en cero en la estructura
+                goVlookup=false;
+                pila.push(TableName+"."+ColName);
+                System.out.println(TableName+"."+ColName+"-->");
+                Lex Lexico = new Lex();
+                int a = McTables.getColLocation(McTables, TableName,ColName);
+                String ga = McTables.getCellValue(McTables,TableName,2,a);
+                Lexico.getTokens(ga);
+                getPath(Lexico,McTables);
             }
             if(tok == -1 && gotTable == true){
                 gotTable=false;
