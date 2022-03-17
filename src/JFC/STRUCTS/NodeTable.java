@@ -144,6 +144,24 @@ public class NodeTable {
         return found;
     }
 
+    public String getColName(NodeTable TablesRoot, String TableName, int Col){
+        NodeTable RetrievedTable;
+        RowCols row;
+        String found="NOT FOUND";
+
+        //asi recuperamos una tabla de la estructura
+        RetrievedTable = TablesRoot.retrieveTable(TablesRoot,TableName);
+        row = RetrievedTable.Rows;
+
+        while(row.getIdCol()!= Col){
+            row = row.NextCol;
+            if(row.getIdCol() == Col){
+                return row.getValue();
+            }
+        }
+        return found;
+    }
+
     public String getCellValue(NodeTable TablesRoot, String TableName, int RowId, int ColId){
         String RowData = "";
         NodeTable RetrievedTable;
