@@ -100,7 +100,7 @@ public class Lex {
 
         }
         System.out.println(variable);
-        System.out.println(toks);
+       // System.out.println(toks);
 return toks;
     }
 

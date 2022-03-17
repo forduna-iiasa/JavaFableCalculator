@@ -77,6 +77,7 @@ public class Main {
                 col = Integer.parseInt(String.valueOf(lexico.Cads.get(i)));
                 ColName = McTables.getColName(McTables,TableName,col-1);//restamos uno por que las columnas inician en cero en la estructura
                 goVlookup=false;
+                gotTable = false;
                 pila.push(TableName+"."+ColName);
                 System.out.println(TableName+"."+ColName+"-->");
                 Lex Lexico = new Lex();
