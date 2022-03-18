@@ -28,8 +28,9 @@ public class Main {
         //asi recuperamos una tabla de la estructura
      //   RetrievedTable = McTables.retrieveTable(McTables,"Diet_scen");
 
-        int a = McTables.getColLocation(McTables,"Reporting_aggregate","kcal_hist");
-        String g = McTables.getCellValue(McTables,"Reporting_aggregate",2,a);
+        //int a = McTables.getColLocation(McTables,"Reporting_aggregate","kcal_hist");
+        //String g = McTables.getCellValue(McTables,"Reporting_aggregate",2,a);
+        String g = "=SUMIFS(and(Total_results_diets[kcal_hist],if(Calc_FeasProdLivestock[FeasProd],SUMIFS(WaterUseEfficiencyShifters[shWF_blue],SUMIFS(EmbedWaterLive[wf_value],EmbedWaterLive[fproduct],[@fproduct],EmbedWaterLive[wf_type],\"blue\"), WaterUseEfficiencyShifters[WF_scen]),Total_results_diets[YEAR]),[@Year])$";
         Lexico.getTokens(g);
         m.getPath(Lexico,McTables);
         m.printPila();
@@ -82,7 +83,7 @@ public class Main {
                 System.out.println(TableName+"."+ColName+"-->");
                 Lex Lexico = new Lex();
                 int a = McTables.getColLocation(McTables, TableName,ColName);
-                String ga = McTables.getCellValue(McTables,TableName,2,a);
+                String ga = McTables.getCellValue(McTables,TableName,1,a);
                 Lexico.getTokens(ga);
                 getPath(Lexico,McTables);
             }
@@ -93,7 +94,7 @@ public class Main {
                 System.out.println(TableName+"."+ColName+"-->");
                 Lex Lexico = new Lex();
                 int a = McTables.getColLocation(McTables, TableName,ColName);
-                String ga = McTables.getCellValue(McTables,TableName,2,a);
+                String ga = McTables.getCellValue(McTables,TableName,1,a);
                 Lexico.getTokens(ga);
                 getPath(Lexico,McTables);
             }
