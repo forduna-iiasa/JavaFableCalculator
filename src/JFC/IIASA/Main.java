@@ -30,10 +30,12 @@ public class Main {
 
         //int a = McTables.getColLocation(McTables,"Reporting_aggregate","kcal_hist");
         //String g = McTables.getCellValue(McTables,"Reporting_aggregate",2,a);
-        String g = "=SUMIFS(and(Total_results_diets[kcal_hist],if(Calc_FeasProdLivestock[FeasProd],SUMIFS(WaterUseEfficiencyShifters[shWF_blue],SUMIFS(EmbedWaterLive[wf_value],EmbedWaterLive[fproduct],[@fproduct],EmbedWaterLive[wf_type],\"blue\"), WaterUseEfficiencyShifters[WF_scen]),Total_results_diets[YEAR]),[@Year])$";
+	//String g="=IF(DietScenDef[[#This Row],[FAO2015]]>0,DietScenDef[[#This Row],[FAO2015]]-DietScenDef[[#This Row],[current]],SUMIFS(DietTarget[diff],DietTarget[DietScen],DietScenDef[[#This Row],[DietScen]],DietTarget[PROD_GROUP],DietScenDef[[#This Row],[PROD_GROUP]]))$";
+    //String g = "=SUMIFS(FAOFoodPerCapita[food_intake],FAOFoodPerCapita[Year],DietScenDef[[#This Row],[Year]],FAOFoodPerCapita[Food_group],DietScenDef[[#This Row],[PROD_GROUP]])$";
+        String g= "=SUMIFS(calc_dmer_activitylevel[Total], calc_dmer_activitylevel[YEAR], Calc_min_daily_kcal[[#This Row],[Year]])/Calc_min_daily_kcal[[#This Row],[Population]]$";
         Lexico.getTokens(g);
-        m.getPath(Lexico,McTables);
-        m.printPila();
+    m.getPath(Lexico,McTables);
+    m.printPila();
 
 
 
@@ -61,6 +63,7 @@ public class Main {
     public void getPath(Lex lexico,NodeTable McTables) throws FileNotFoundException {
         boolean gotTable =false;
         boolean goVlookup = false;
+        boolean gato = false;
         String TableName="",ColName="";
         int col=0;
 
@@ -73,6 +76,9 @@ public class Main {
             if(tok == 300) {
                 TableName = lexico.Cads.get(i).toString();
                 gotTable = true;
+            }
+            if(tok == -20){
+                gato = true;
             }
             if(tok == -17 && goVlookup == true){
                 col = Integer.parseInt(String.valueOf(lexico.Cads.get(i)));
@@ -88,15 +94,20 @@ public class Main {
                 getPath(Lexico,McTables);
             }
             if(tok == -1 && gotTable == true){
-                gotTable=false;
-                ColName = lexico.Cads.get(i).toString();
-                pila.push(TableName+"."+ColName);
-                System.out.println(TableName+"."+ColName+"-->");
-                Lex Lexico = new Lex();
-                int a = McTables.getColLocation(McTables, TableName,ColName);
-                String ga = McTables.getCellValue(McTables,TableName,1,a);
-                Lexico.getTokens(ga);
-                getPath(Lexico,McTables);
+                if(gato == true){
+                    gato = false;
+                }else{
+                    gotTable=false;
+                    ColName = lexico.Cads.get(i).toString();
+                    pila.push(TableName+"."+ColName);
+                    System.out.println(TableName+"."+ColName+"-->");
+                    Lex Lexico = new Lex();
+                    int a = McTables.getColLocation(McTables, TableName,ColName);
+                    String ga = McTables.getCellValue(McTables,TableName,1,a);
+                    Lexico.getTokens(ga);
+                    getPath(Lexico,McTables);
+                }
+
             }
         }
     }

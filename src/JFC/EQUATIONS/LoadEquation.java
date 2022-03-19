@@ -22,7 +22,7 @@ public class LoadEquation {
     List<XSSFSheet> sheets;
     String Calculator="",country="";
 
-    public void ReedCalcShTbl(String Calculator,String paisx) throws IOException {
+    public void WriteShTb(String Calculator) throws IOException {
         ZipSecureFile.setMinInflateRatio(0);
         String sheetsFile,tablesFile;
         sheetsFile = "H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\Sheets.txt";
@@ -54,20 +54,102 @@ public class LoadEquation {
                 colnames="";
                 wrTable.write(v);
                 wrTable.newLine();
-                SaveTable(t,sheet,paisx,t.getName());
             }
         }
         wrTable.flush();
         wrTable.close();
         wrSheet.flush();
         wrSheet.close();
-
-
-        //  }
     }
 
+    public void WriteTables(String Calculator) throws IOException{
+        ZipSecureFile.setMinInflateRatio(0);
+        String chivo="",vals="";
+        DataFormatter dataFormatter = new DataFormatter();
 
-    private void SaveTable(XSSFTable t, XSSFSheet shet, String paisx2, String Tabla) {
+        XSSFWorkbook workbook = null;
+        try {
+            workbook = new XSSFWorkbook(new File(Calculator));
+
+        numSheets = workbook.getNumberOfSheets();
+        for(int i = 2; i< numSheets; i++){
+            sheet = workbook.getSheetAt(i);
+            String na = workbook.getSheetAt(i).getSheetName();
+           // System.out.println("hoja " + na);
+            if(na.equals("3_data_crops")){
+                int a=0;
+            }
+            tables = sheet.getTables();
+            //for (XSSFTable t : tables) {
+            for(int ta=0;ta<tables.size();ta++){
+                XSSFTable t = tables.get(ta);
+                int maxRowindex = t.getEndRowIndex();
+                int iniRowindex = t.getStartRowIndex()+1;
+                int iniColindex = t.getStartColIndex();
+                int maxColindex = t.getEndColIndex();
+                int numCols = t.getColumnCount();
+                int numRows = t.getRowCount();
+                int totalRows = t.getTotalsRowCount();
+
+                chivo = "C:\\Calculators\\formulas\\"+t.getName()+".txt";
+                System.out.println(na + "." + t.getName());
+                if(t.getName().equals("Fprodcount")){
+                    int a=0;
+                }
+                try {
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(chivo,false));
+                  //  System.out.println("terminorow " + maxRow);
+                    for (int r = iniRowindex; r <= maxRowindex; r++) {
+                        for (int j = iniColindex; j <= maxColindex; j++) {
+                            if(r==315){
+                                int a =0;
+                            }
+                   //         System.out.println("r " + r + "j "+ j);
+                            cell = sheet.getRow(r).getCell(j);
+
+                            CellType cel_Type;
+                            try {
+                                cel_Type = cell.getCellType();
+                            } catch (NullPointerException e) {
+                                cel_Type = CellType.ERROR;
+                            }
+
+                            switch (cel_Type){
+                                case STRING:
+//                            vals += cell.getStringCellValue()+"\t";
+                                    vals += dataFormatter.formatCellValue(cell)+"$"+"\t";
+                                    break;
+                                case FORMULA:
+                                    vals += cell.getCellFormula()+"$"+"\t";
+                                    //vals += ","+cell.getRawValue();
+                                    break;
+                                case NUMERIC:
+//                             vals += ""+(double)cell.getNumericCellValue()+"\t";
+                                    vals += dataFormatter.formatCellValue(cell)+"$"+"\t";
+                                    break;
+                                case BLANK:
+                                    vals += "NUL$"+"\t";
+                                    break;
+                                case ERROR:
+                                    vals += "ERROR$"+"\t";
+                                    break;
+                            }
+                        }
+                        bw.write(vals);
+                        bw.newLine();
+                        bw.flush();
+                        vals="";
+                    }
+                    bw.flush();
+                    bw.close();
+                } catch (IOException e) {}
+            }
+        }
+        } catch (InvalidFormatException ex) {
+            System.out.println(ex);
+        }
+    }
+    public void SaveTable(XSSFTable t, XSSFSheet shet, String paisx2, String Tabla) {
         String chivo="",vals="";
         DataFormatter dataFormatter = new DataFormatter();
         //chivo = "H:\\Git\\JavaFableCalculator\\JavaFableCalculator\\files\\equations.txt";
@@ -81,11 +163,11 @@ public class LoadEquation {
             BufferedWriter bw = new BufferedWriter(new FileWriter(chivo,true));
             //bw.write(Scenathon+"\t"+it+"\t"+lugar+"\t");
             // bw.newLine();
-            startRow =1;
+            startRow =2;
 
             List <XSSFTableColumn> totcols = t.getColumns();
 
-           for (int i = t.getStartCellReference().getRow(); i <= t.getEndCellReference().getRow(); i++) {
+           for (int i = (t.getStartCellReference().getRow())+1; i <= t.getEndCellReference().getRow(); i++) {
                // vals += Scenathon+","+it+","+lugar+",";
                 // else vals += "Scenathon_id"+"\t"+"Iteration"+"\t"+"Country"+"\t";
                 for (int j = t.getStartCellReference().getCol(); j <= t.getEndCellReference().getCol(); j++) {
@@ -105,21 +187,21 @@ public class LoadEquation {
                     switch (cel_Type){
                         case STRING:
 //                            vals += cell.getStringCellValue()+"\t";
-                            vals += dataFormatter.formatCellValue(cell)+"\t";
+                            vals += dataFormatter.formatCellValue(cell)+"$"+"\t";
                             break;
                         case FORMULA:
-                            vals += cell.getCellFormula()+"\t";
+                            vals += cell.getCellFormula()+"$"+"\t";
                             //vals += ","+cell.getRawValue();
                             break;
                         case NUMERIC:
 //                             vals += ""+(double)cell.getNumericCellValue()+"\t";
-                            vals += dataFormatter.formatCellValue(cell)+"\t";
+                            vals += dataFormatter.formatCellValue(cell)+"$"+"\t";
                             break;
                         case BLANK:
-                            vals += "\t";
+                            vals += "NUL$"+"\t";
                             break;
                         case ERROR:
-                            vals += dataFormatter.formatCellValue(cell)+"\t";
+                            vals += "ERROR$"+"\t";
                             break;
 
 
@@ -189,7 +271,7 @@ public class LoadEquation {
         //  }
     }
 
-    private void SaveData(XSSFTable t,int tab, XSSFSheet shet,String Scenathon,String it,String lugar,int paisx2) {
+    public void SaveData(XSSFTable t,int tab, XSSFSheet shet,String Scenathon,String it,String lugar,int paisx2) {
         String chivo="",vals="";
         DataFormatter dataFormatter = new DataFormatter();
         if(tab ==1) chivo = "H:\\scenathon2021\\clacs\\scenario.txt";

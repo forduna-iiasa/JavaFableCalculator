@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class BuildMcTables {
-    public NodeTable BuildTables(){
+    public NodeTable BuildTables() throws IOException {
         ArrayList CalcTables;
         ArrayList CalcSheets,Equations;
-        //new Main().PrepareCountryFiles();
+     //  PrepareFiles();
         CalcTables = new LoadTableNames().GetData();
         //region build mcs LA hoja es el mc y sus hijos son las tablas que tiene cada hoja
         /* NodeMetaCase LinkerMc;
@@ -66,36 +66,16 @@ public class BuildMcTables {
         return linkerMc;
     }
     public void PrepareFiles() throws IOException {
-        int step = 0;
-        int totalFiles = 0;
         ZipSecureFile.setMinInflateRatio(0);
-        String[] ids;
-        String[] scen;
-        String[] iteration;
         File[] listOfFiles;
-        String[] files;
-        //File folder = new File("H:\\LinkerMarckovModel\\calcs\\");
-        //I:\javalera\Calculators\calcs P:\scnt\ScenathonExtractions061221,radeAdj_Sus
-
         File folder = new File("C:\\Calculators\\");
         listOfFiles = folder.listFiles();
-        File file;
-
         for (int i = 0; i < listOfFiles.length; i++) {
-            System.out.println(i);
             if (listOfFiles[i].isFile()) {
                 if (listOfFiles[i].getName().endsWith(".xlsx")) {
-
-                    String f = listOfFiles[i].getName();
-                    ids = f.split("-");
-//              System.out.println(f);
-                    scen = ids[1].split("_");
-                    iteration = ids[2].split("_");
-                    System.out.println("totalFiles:" + totalFiles);
-                    step = 0;
-                    new LoadEquation().ReedCalcShTbl(listOfFiles[i].getAbsolutePath(), iteration[1]);
+               //     new LoadEquation().WriteShTb(listOfFiles[i].getAbsolutePath());
+                    new LoadEquation().WriteTables(listOfFiles[i].getAbsolutePath());
                 }
-                totalFiles++;
             }
         }
     }
@@ -120,7 +100,6 @@ public class BuildMcTables {
             System.out.println(i);
             if (listOfFiles[i].isFile()) {
                 if (listOfFiles[i].getName().endsWith(".xlsx")) {
-
                     String f = listOfFiles[i].getName();
                     ids = f.split("-");
 //              System.out.println(f);
@@ -128,7 +107,7 @@ public class BuildMcTables {
                     iteration = ids[2].split("_");
                     System.out.println("totalFiles:" + totalFiles);
                     step = 0;
-                    new LoadEquation().ReedCalcShTbl(listOfFiles[i].getAbsolutePath(), iteration[1]);
+                    new LoadEquation().WriteShTb(listOfFiles[i].getAbsolutePath());
                 }
                 totalFiles++;
             }

@@ -16,7 +16,8 @@ public class LoadFileEquations {
         File file = null;
         FileReader fr = null;
         BufferedReader br = null;
-        String Location = "C:\\Calculators\\aa\\"+chivo+".txt";
+       // String Location = "C:\\Calculators\\aa\\"+chivo+".txt";
+        String Location = "C:\\Calculators\\formulas\\"+chivo+".txt";
         try {
             // definition of the name of the file, using the buffer and read line by line
             file = new File (Location);
