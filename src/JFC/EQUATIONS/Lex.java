@@ -14,6 +14,7 @@ public class Lex {
     ArrayList CalcSheets;
     public ArrayList Cads;
     public ArrayList Toks;
+    public String CurrentString;
    public Lex() throws FileNotFoundException {
        MatLex = new MatrixQ();
        MatLex.MatrixLoadFile();
@@ -25,6 +26,7 @@ public class Lex {
     public String getTokens(String Cad) throws FileNotFoundException {
         int tope = 0, numCh = 0, col = 0, token = 0, ren = 0;
         int isStatement;
+        CurrentString = Cad;
         boolean isHoja = false;
         boolean isTable = false;
         String toks = "", variable = "", cadena = "";
@@ -100,7 +102,7 @@ public class Lex {
 
         }
         System.out.println(variable);
-        System.out.println(toks);
+     //   System.out.println(toks);
 return toks;
     }
 

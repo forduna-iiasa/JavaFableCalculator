@@ -1,29 +1,30 @@
 package JFC.IIASA;
 
 import JFC.EQUATIONS.Lex;
-import JFC.EQUATIONS.LoadEquation;
-import JFC.STRUCTS.NodeMetaCase;
 import JFC.STRUCTS.NodeTable;
-import JFC.STRUCTS.RowCols;
-import jade.domain.FIPANames;
-import javafx.scene.control.Tab;
-import org.apache.poi.openxml4j.util.ZipSecureFile;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.io.*;
 import java.util.Stack;
 
 public class Main {
-    Stack<String> pila;
-
-
+    private static JTree Tree;
+    Stack<String> pila,pilaquita;
+    static DefaultMutableTreeNode root;
+    public static BufferedWriter bw;
     public static void main(String[] args) throws IOException {
         Main m = new Main();
         Lex Lexico = new Lex();
         NodeTable McTables = new BuildMcTables().BuildTables();
         m.pila = new Stack<String>();
+        m.pilaquita = new Stack<String>();
+        String Chivo;
+        Chivo = "C:\\Calculators\\FormulaTracker2.xml";
+
         //NodeTable RetrievedTable;
         //asi recuperamos una tabla de la estructura
      //   RetrievedTable = McTables.retrieveTable(McTables,"Diet_scen");
@@ -32,12 +33,71 @@ public class Main {
         //String g = McTables.getCellValue(McTables,"Reporting_aggregate",2,a);
 	//String g="=IF(DietScenDef[[#This Row],[FAO2015]]>0,DietScenDef[[#This Row],[FAO2015]]-DietScenDef[[#This Row],[current]],SUMIFS(DietTarget[diff],DietTarget[DietScen],DietScenDef[[#This Row],[DietScen]],DietTarget[PROD_GROUP],DietScenDef[[#This Row],[PROD_GROUP]]))$";
     //String g = "=SUMIFS(FAOFoodPerCapita[food_intake],FAOFoodPerCapita[Year],DietScenDef[[#This Row],[Year]],FAOFoodPerCapita[Food_group],DietScenDef[[#This Row],[PROD_GROUP]])$";
-        String g= "=SUMIFS(calc_dmer_activitylevel[Total], calc_dmer_activitylevel[YEAR], Calc_min_daily_kcal[[#This Row],[Year]])/Calc_min_daily_kcal[[#This Row],[Population]]$";
+       String g= "=SUMIFS(calc_dmer_activitylevel[Total], calc_dmer_activitylevel[YEAR], Calc_min_daily_kcal[[#This Row],[Year]])/Calc_min_daily_kcal[[#This Row],[Population]]$";
+        root = new DefaultMutableTreeNode(g);
         Lexico.getTokens(g);
-    m.getPath(Lexico,McTables);
+        bw = new BufferedWriter(new FileWriter(Chivo,false));
+        bw.write("<?xml version = \"1.0\"?>");
+        bw.newLine();
+        bw.write("<tracking>");bw.newLine(); bw.write("<eq>");bw.newLine();
+        bw.write(g);bw.newLine();
+        bw.write("</eq>");bw.newLine();
+
+        bw.newLine();
+        m.getPath(Lexico,McTables,"","",root);
+        bw.write("</tracking>");
+
+        bw.flush();
+        bw.close();
     m.printPila();
+    m.printPilaquita();
 
 
+       // Chivo = "C:\\Users\\orduna\\Desktop\\pvas.xml";
+     //   Chivo = "C:\\Calculators\\FormulaTracker3.xml";
+        try {
+            JFrame frame = new JFrame("vamoaver");
+            frame.setSize(800,600);
+
+/*
+            DefaultMutableTreeNode elemento_root = new DefaultMutableTreeNode("root");
+
+            DefaultMutableTreeNode elemento_uno = new DefaultMutableTreeNode("uno");
+            elemento_uno.add(new DefaultMutableTreeNode("uno.uno"));
+            elemento_uno.add(new DefaultMutableTreeNode("uno.dos"));
+            DefaultMutableTreeNode elemento_dos = new DefaultMutableTreeNode("dos");
+           // elemento_dos.add(new DefaultMutableTreeNode("dos.uno"));
+           // elemento_dos.add(new DefaultMutableTreeNode("dos.uno"));
+            DefaultMutableTreeNode elemento_dos_u = new DefaultMutableTreeNode("dosu");
+            DefaultMutableTreeNode elemento_dos_u2 = new DefaultMutableTreeNode("dosa");
+            DefaultMutableTreeNode elemento_dos_u3 = new DefaultMutableTreeNode("dosb");
+
+            elemento_dos_u2.add(elemento_dos_u3);
+            elemento_dos_u.add(elemento_dos_u2);
+            elemento_dos.add(elemento_dos_u);
+            elemento_root.add(elemento_dos);
+
+
+
+
+            //elemento_dos.add(new DefaultMutableTreeNode("dos.uno"));
+
+            elemento_root.add(elemento_uno);
+            elemento_root.add(elemento_dos);
+*/
+            JTree t = new JTree(root);
+
+
+
+
+
+
+            frame.add(t);
+            //Tree.setVisible(true);
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
        /* for(int i=1;i<2;i++) {
@@ -54,20 +114,20 @@ public class Main {
         }*/
 
         //Lex Lexico = new Lex();
-        //Lexico.getTokens("fher,WaterUse_Scen,Scen_foodloss,sumif,sumifs,vlookup,3456$%^2345&*%&");
+        //Lexico.getTokens("fher,WaterUse_Scen,Scen_fodloss,soumif,sumifs,vlookup,3456$%^2345&*%&");
 
 
 
     }
-
-    public void getPath(Lex lexico,NodeTable McTables) throws FileNotFoundException {
+    public void getPath(Lex lexico, NodeTable McTables, String tbltemp, String coltemp, DefaultMutableTreeNode root) throws IOException {
         boolean gotTable =false;
         boolean goVlookup = false;
         boolean gato = false;
-        String TableName="",ColName="";
+        String TableName=tbltemp,ColName=coltemp;
         int col=0;
-
+        Stack<String> pilaquita=new Stack<String>();
         int tok=0;
+
         for(int i=0;i<lexico.Toks.size();i++){
             tok = (int) lexico.Toks.get(i);
             if(tok == 103) {
@@ -86,12 +146,22 @@ public class Main {
                 goVlookup=false;
                 gotTable = false;
                 pila.push(TableName+"."+ColName);
+                pilaquita.push(TableName+"."+ColName);
+                String p = "<"+TableName+"."+ColName+">";
+                bw.write(p);bw.newLine();
                 System.out.println(TableName+"."+ColName+"-->");
+                DefaultMutableTreeNode caso = new DefaultMutableTreeNode(TableName+"."+ColName);
                 Lex Lexico = new Lex();
                 int a = McTables.getColLocation(McTables, TableName,ColName);
                 String ga = McTables.getCellValue(McTables,TableName,1,a);
+                DefaultMutableTreeNode caso2 = new DefaultMutableTreeNode(ga);
+                caso.add(caso2);
+                root.add(caso);
+                bw.write("<eq>");bw.newLine();
+                bw.write(ga);bw.newLine();
+                bw.write("</eq>");bw.newLine();
                 Lexico.getTokens(ga);
-                getPath(Lexico,McTables);
+                getPath(Lexico,McTables,TableName,ColName, caso);
             }
             if(tok == -1 && gotTable == true){
                 if(gato == true){
@@ -100,22 +170,51 @@ public class Main {
                     gotTable=false;
                     ColName = lexico.Cads.get(i).toString();
                     pila.push(TableName+"."+ColName);
+                    pilaquita.push(TableName+"."+ColName);
+                    String p = "<"+TableName+"."+ColName+">";
+                    bw.write(p);bw.newLine();
                     System.out.println(TableName+"."+ColName+"-->");
+                    DefaultMutableTreeNode caso = new DefaultMutableTreeNode(TableName+"."+ColName);
                     Lex Lexico = new Lex();
                     int a = McTables.getColLocation(McTables, TableName,ColName);
                     String ga = McTables.getCellValue(McTables,TableName,1,a);
+                    DefaultMutableTreeNode caso2 = new DefaultMutableTreeNode(ga);
+                    caso.add(caso2);
+                    root.add(caso);
+                    bw.write("<eq>");bw.newLine();
+                    bw.write(ga);bw.newLine();
+                    bw.write("</eq>");bw.newLine();
+
                     Lexico.getTokens(ga);
-                    getPath(Lexico,McTables);
+                    getPath(Lexico,McTables,TableName,ColName, caso);
                 }
 
             }
+            if(tok == -22){
+                while(!pilaquita.empty()){
+                    String v = "</"+pilaquita.peek()+">";
+                    System.out.println(v);
+                    pilaquita.pop();
+                    bw.write(v);bw.newLine();
+                }
+            }
+
         }
+
+
     }
 
     public void printPila(){
         while(!pila.empty()){
             System.out.println(this.pila.peek());
             pila.pop();
+        }
+    }
+    public void printPilaquita(){
+        System.out.println("****************quitarl");
+        while(!pilaquita.empty()){
+            System.out.println(this.pilaquita.peek());
+            pilaquita.pop();
         }
     }
 
