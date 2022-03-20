@@ -49,51 +49,24 @@ public class Main {
 
         bw.flush();
         bw.close();
-    m.printPila();
-    m.printPilaquita();
-
-
-       // Chivo = "C:\\Users\\orduna\\Desktop\\pvas.xml";
-     //   Chivo = "C:\\Calculators\\FormulaTracker3.xml";
+        m.printPila();
+        m.printPilaquita();
         try {
-            JFrame frame = new JFrame("vamoaver");
+            JFrame frame = new JFrame("FABLE Calculator, Equations Tracker [IIASA-ASA-NODES].");
             frame.setSize(800,600);
-
-/*
-            DefaultMutableTreeNode elemento_root = new DefaultMutableTreeNode("root");
-
-            DefaultMutableTreeNode elemento_uno = new DefaultMutableTreeNode("uno");
-            elemento_uno.add(new DefaultMutableTreeNode("uno.uno"));
-            elemento_uno.add(new DefaultMutableTreeNode("uno.dos"));
-            DefaultMutableTreeNode elemento_dos = new DefaultMutableTreeNode("dos");
-           // elemento_dos.add(new DefaultMutableTreeNode("dos.uno"));
-           // elemento_dos.add(new DefaultMutableTreeNode("dos.uno"));
-            DefaultMutableTreeNode elemento_dos_u = new DefaultMutableTreeNode("dosu");
-            DefaultMutableTreeNode elemento_dos_u2 = new DefaultMutableTreeNode("dosa");
-            DefaultMutableTreeNode elemento_dos_u3 = new DefaultMutableTreeNode("dosb");
-
-            elemento_dos_u2.add(elemento_dos_u3);
-            elemento_dos_u.add(elemento_dos_u2);
-            elemento_dos.add(elemento_dos_u);
-            elemento_root.add(elemento_dos);
-
-
-
-
-            //elemento_dos.add(new DefaultMutableTreeNode("dos.uno"));
-
-            elemento_root.add(elemento_uno);
-            elemento_root.add(elemento_dos);
-*/
+            JPanel panel = new JPanel();
             JTree t = new JTree(root);
+            panel.add(t);
+// add the panel to a JScrollPane
+            JScrollPane jScrollPane = new JScrollPane(panel);
+// only a configuration to the jScrollPane...
+            jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+// Then, add the jScrollPane to your frame
+            frame.getContentPane().add(jScrollPane);
 
 
 
-
-
-
-            frame.add(t);
-            //Tree.setVisible(true);
             frame.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
