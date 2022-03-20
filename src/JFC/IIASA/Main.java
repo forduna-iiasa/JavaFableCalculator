@@ -8,6 +8,7 @@ import org.dom4j.io.SAXReader;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.*;
 import java.io.*;
 import java.util.Stack;
 
@@ -54,9 +55,13 @@ public class Main {
         try {
             JFrame frame = new JFrame("FABLE Calculator, Equations Tracker [IIASA-ASA-NODES].");
             frame.setSize(800,600);
+            Image icon = Toolkit.getDefaultToolkit().getImage("JavaFableCalculator/files/fable_icon.png");
+            frame.setIconImage(icon);
+            frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             JPanel panel = new JPanel();
             JTree t = new JTree(root);
             panel.add(t);
+            panel.setBackground(Color.WHITE);
 // add the panel to a JScrollPane
             JScrollPane jScrollPane = new JScrollPane(panel);
 // only a configuration to the jScrollPane...
@@ -64,9 +69,6 @@ public class Main {
             jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 // Then, add the jScrollPane to your frame
             frame.getContentPane().add(jScrollPane);
-
-
-
             frame.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
