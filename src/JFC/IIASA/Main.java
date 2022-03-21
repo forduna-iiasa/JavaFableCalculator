@@ -9,6 +9,8 @@ import org.dom4j.io.SAXReader;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.Stack;
 
@@ -62,13 +64,18 @@ public class Main {
             JTree t = new JTree(root);
             panel.add(t);
             panel.setBackground(Color.WHITE);
-// add the panel to a JScrollPane
+
+            // add the panel to a JScrollPane
             JScrollPane jScrollPane = new JScrollPane(panel);
 // only a configuration to the jScrollPane...
             jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
             jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 // Then, add the jScrollPane to your frame
+
+
+
             frame.getContentPane().add(jScrollPane);
+
             frame.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
